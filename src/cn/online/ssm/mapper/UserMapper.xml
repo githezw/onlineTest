@@ -5,6 +5,9 @@
 
 <mapper namespace="cn.online.ssm.mapper.UserMapper">
     <select id="stuLogin" parameterType="String" resultType="string">
-        SELECT PASSWD FROM STUDENTINFO WHERE REALNAME = #{realname}
+        SELECT passwd FROM studentinfo WHERE realname = #{realname}
+    </select>
+    <select id="teaLogin" parameterType="String" resultType="string">
+        SELECT passwd FROM teacherinfo WHERE realname = #{realname}
     </select>
 </mapper>

@@ -8,17 +8,40 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class UserServiceImpl implements UserService {
 
-
+    @Autowired(required = false)
     private UserMapper userMapper;
 
+    /**
+     * @author hezw
+     * 用户登录方法，根据角色分学生和老师登录
+     */
     @Override
-    public String teaLogin(String realname) throws Exception {
-        return new String();
+    public Boolean userLogin(String realname, String passwdTemp, String role) throws Exception {
+        boolean flag;
+        if ("student".equals(role)) {
+            try {
+                String passwd = userMapper.stuLogin(realname);
+                if (passwd.equals(passwdTemp)) {
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+            } catch (Exception e) {
+                flag = false;
+            }
+        } else {
+            try {
+                String passwd = userMapper.teaLogin(realname);
+                if (passwd.equals(passwdTemp)) {
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+            } catch (Exception e) {
+                flag = false;
+            }
+        }
+        return flag;
     }
 
-    @Override
-    public String stuLogin(String realname) throws Exception {
-        String passwd = userMapper.stuLogin(realname);
-        return passwd;
-    }
 }

@@ -5,4 +5,5 @@ package cn.online.ssm.mapper;
  */
 public interface UserMapper {
     String stuLogin(String realname) throws Exception;
+    String teaLogin(String realname) throws Exception;
 }

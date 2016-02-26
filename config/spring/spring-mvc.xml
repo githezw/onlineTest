@@ -14,7 +14,7 @@
       http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
       http://www.springframework.org/schema/mvc/spring-aop-4.2.xsd">
  <!--
-  	配置自动扫描的包，让其扫描    com.longhang,controller下面的所有包
+  	配置自动扫描的包，让其扫描所有包
  -->
    
   <context:component-scan base-package = "cn.online.ssm.controller"></context:component-scan>

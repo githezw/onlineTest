@@ -7,6 +7,6 @@ import cn.online.ssm.po.TeacherPo;
  * Created by hezw on 2016/2/22.
  */
 public interface UserService {
-    String teaLogin(String realname) throws Exception;
-    String stuLogin(String realname) throws Exception;
+    Boolean userLogin(String realname, String passwdTemp, String role) throws Exception;
+
 }
