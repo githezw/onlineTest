@@ -3,6 +3,8 @@ package cn.online.ssm.service.impl;
 import cn.online.ssm.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Map;
+
 /**
  * Created by hezw on 2016/2/22.
  */
@@ -42,6 +44,16 @@ public class UserServiceImpl implements UserService {
             }
         }
         return flag;
+    }
+
+    @Override
+    public void changePasswd(Map<String, String> map) throws Exception {
+        try {
+            userMapper.changePasswd(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

@@ -10,4 +10,8 @@
     <select id="teaLogin" parameterType="String" resultType="string">
         SELECT passwd FROM teacherinfo WHERE realname = #{realname}
     </select>
+
+    <update id="changePasswd" parameterType="Map">
+        UPDATE ${tablename} SET passwd = ${passwd} where realname = ${realname}
+    </update>
 </mapper>
