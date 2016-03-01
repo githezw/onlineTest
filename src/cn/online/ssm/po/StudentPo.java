@@ -10,8 +10,11 @@ public class StudentPo {
     private String sex;
     private int classno;
     private int grade;
+    private String role;
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -55,5 +58,13 @@ public class StudentPo {
 
     public void setGrade(int grade) {
         this.grade = grade;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

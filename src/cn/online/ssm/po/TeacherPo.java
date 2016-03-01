@@ -10,6 +10,7 @@ public class TeacherPo {
     private int classno;
     private int grade;
     private String subject;
+    private String role;
 
     public int getId() {
         return id;
@@ -58,4 +59,8 @@ public class TeacherPo {
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
+    public String getRole() { return role;}
+
+    public void setRole(String role) { this.role = role; }
 }
