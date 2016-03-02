@@ -29,6 +29,10 @@ public class UserController {
     public String index() throws Exception{
         return "index";
     }
+    @RequestMapping("/mainPage")
+    public String mainPage() throws Exception{
+        return "main";
+    }
     /*
     用户登录请求
      */
@@ -39,14 +43,16 @@ public class UserController {
 //        String passwdTemp = loginPo.getPasswdTemp();
 //        String role = loginPo.getRole();
         session.setAttribute("role", role);
+        session.setAttribute("realname",realname);
         boolean flag = userServiceImpl.userLogin(realname, passwdTemp, role);
         if(flag) {
             model.setViewName("main");
-            return model;
         }
-        else
+        else{
             model.setViewName("index");
-            return model;
+            model.addObject("message","输入的用户名或密码错误");
+        }
+        return model;
     }
 
     /*
