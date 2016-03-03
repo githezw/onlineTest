@@ -1,3 +1,7 @@
+body{
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+
 /*登录框样式*/
 #loginForm{
     text-align: center;
@@ -26,11 +30,39 @@
     margin-left: 45%
 }
 
+/*分隔线样式*/
+.splitLine{
+
+}
+
 /*主页面head区域*/
 #mainHeader{
     background-color: #2e3e4c;
     width:100%;
-    height:60px;
+    height:50px;
+}
+
+/*主页面头像区域*/
+.avatar{
+    width:200px;
+    height:100%;
+    padding-left: 40px;
+    background-color: #218380;
+    font-size: 18px;
+    color: #ffffff;
+    line-height:50px;
+    overflow:hidden;
+}
+
+/*头像下拉菜单*/
+.avaterMenu{
+    width:200px;
+    background-color: #218380;
+    color: #ffffff;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    margin-top: 50px;
+    border-top: hidden;
 }
 
 /*主页面左nav区域*/
@@ -38,5 +70,37 @@
     background-color: #2e3e4c;
     width:200px;
     height:100%;
+}
+
+/*学科div样式*/
+.subject{
+    width:100%;
+    height: 60px;
+    color:white;
+    font-size: x-large;
+    cursor: pointer;
+    /*line-height:60px;*/
+    /*overflow:hidden;*/
+    padding: 15px 20px;
+    background-color: #2e3e4c
+}
+
+.examContent{
+    color: #fff;
+    margin: 0px 10px;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+
+.examContent-s1{
+    background-color: #d81159;
+}
+
+.examContent-s2{
+    background-color: #ffbc42;
+}
+
+.examContent-s3{
+    background-color: #218380;
 }
 

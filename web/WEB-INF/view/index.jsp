@@ -51,7 +51,7 @@
         </div>
     </div>
 </form>
-${message}
+<div class="splitLine"></div>
 <%--<script>
     $("#submit").click(function(){
         var realname = $("#realname").val();
