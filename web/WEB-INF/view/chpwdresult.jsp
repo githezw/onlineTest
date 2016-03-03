@@ -25,19 +25,19 @@
     </c:choose>
 
 <script language="javascript">
-    function jump(count) {
+    function jump() {
         var second = $("span#num").html();
         if(second>0)
         {
             second--;
             $("#num").html(second);
         }else{
-            location.href="/onlineTest/main.jsp";
+            location.href="/WEB-INF/view/main.jsp";
         }
         setTimeout("jump()", 1000);
     }
     $(document).ready(function() {
-        jump(3);
+        jump();
     });
 </script>
 </body>
