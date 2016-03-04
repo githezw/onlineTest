@@ -32,7 +32,7 @@
             second--;
             $("#num").html(second);
         }else{
-            location.href="/WEB-INF/view/main.jsp";
+            location.href="/onlineTest/mainPage.action";
         }
         setTimeout("jump()", 1000);
     }

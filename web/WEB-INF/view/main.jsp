@@ -9,34 +9,9 @@
 <html>
 <head>
     <title>在线考试系统班级主页</title>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mine.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/mine.css">
 </head>
 <body>
-<div id="mainHeader">
-    <div class="dropdown">
-        <div class="avatar dropdown-toggle pull-right" id="dropdownMenu1"
-             data-toggle="dropdown">
-            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;demo
-            <span class="caret"></span>
-        </div>
-        <ul class="dropdown-menu pull-right avaterMenu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">查看历史成绩</a>
-            </li>
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">修改密码</a>
-            </li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">退出</a>
-            </li>
-        </ul>
-    </div>
-</div>
+<%@include file="headbar.jsp"%>
 <div id="mainNavLeft" class="panel-group">
         <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
              href="#c1"><span

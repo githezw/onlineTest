@@ -1,17 +1,12 @@
 package cn.online.ssm.controller;
 
-import cn.online.ssm.po.LoginPo;
 import cn.online.ssm.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
@@ -26,33 +21,38 @@ public class UserController {
     private UserServiceImpl userServiceImpl;
 
     @RequestMapping("/index")
-    public String index() throws Exception{
+    public String index() throws Exception {
         return "index";
     }
+
     @RequestMapping("/mainPage")
-    public String mainPage() throws Exception{
+    public String mainPage() throws Exception {
         return "main";
     }
+
     /*
     用户登录请求
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login(String realname,String passwdTemp,String role, HttpSession session) throws Exception {
-        ModelAndView model = new ModelAndView();
-//        String realname = loginPo.getRealname();
-//        String passwdTemp = loginPo.getPasswdTemp();
-//        String role = loginPo.getRole();
-        session.setAttribute("role", role);
-        session.setAttribute("realname",realname);
+    public String login(String realname, String passwdTemp, String role, HttpSession session) throws Exception {
         boolean flag = userServiceImpl.userLogin(realname, passwdTemp, role);
-        if(flag) {
-            model.setViewName("main");
+        if (flag) {
+            session.setAttribute("realname", realname);
+            session.setAttribute("role", role);
+            return "redirect:/mainPage.action";
+        } else {
+            return "redirect:/index.action";
         }
-        else{
-            model.setViewName("index");
-            model.addObject("message","输入的用户名或密码错误");
-        }
-        return model;
+    }
+
+    /*
+    退出登录
+     */
+    @RequestMapping("logout")
+    public String logout(HttpSession session) throws Exception {
+        session.removeAttribute("realname");
+        session.removeAttribute("role");
+        return "redirect:/index.action";
     }
 
     /*
@@ -67,9 +67,10 @@ public class UserController {
     修改密码表单提交url
      */
     @RequestMapping("/changePasswd")
-    public ModelAndView changePasswd(String realname, String passwdold, String passwdnew, String role, String tablename) throws Exception {
+    public ModelAndView changePasswd(String realname, String passwdold, String passwdnew, String role) throws Exception {
         Boolean flag;
         boolean validateFlag;
+        String tablename = role + "info";
         ModelAndView modelAndView = new ModelAndView();
         HashMap map = new HashMap<String, String>();
         map.put("realname", "'" + realname + "'");
