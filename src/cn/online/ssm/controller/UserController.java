@@ -1,10 +1,13 @@
 package cn.online.ssm.controller;
 
+import cn.online.ssm.po.ModifyPwdPo;
 import cn.online.ssm.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -66,7 +69,7 @@ public class UserController {
     /*
     修改密码表单提交url
      */
-    @RequestMapping("/changePasswd")
+/*    @RequestMapping("/changePasswd")
     public ModelAndView changePasswd(String realname, String passwdold, String passwdnew, String role) throws Exception {
         Boolean flag;
         boolean validateFlag;
@@ -90,5 +93,31 @@ public class UserController {
         modelAndView.addObject("flag", flag);
         modelAndView.setViewName("chpwdresult");    //转到修改密码结果跳转页面
         return modelAndView;
+    }*/
+
+    /*
+    通过传递json数据修改密码
+     */
+    @RequestMapping(value = "/changePasswd",method = RequestMethod.POST)
+    public @ResponseBody String changePasswd(@RequestBody ModifyPwdPo modifyPwdPo) throws Exception {
+        Boolean flag;
+        boolean validateFlag;
+        String tablename = modifyPwdPo.getRole() + "info";
+        HashMap map = new HashMap<String, String>();
+        map.put("realname", "'" + modifyPwdPo.getRealname() + "'");
+        map.put("passwd", "'" + modifyPwdPo.getPasswdnew() + "'");
+        map.put("tablename", tablename);
+        validateFlag = userServiceImpl.userLogin(modifyPwdPo.getRealname(), modifyPwdPo.getPasswdold(), modifyPwdPo.getRole());
+        if (validateFlag) {
+            try {
+                userServiceImpl.changePasswd(map);
+                flag = true;
+            } catch (Exception e) {
+                flag = false;
+            }
+        } else {
+            flag = false;
+        }
+        return flag.toString();
     }
 }

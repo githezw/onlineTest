@@ -13,8 +13,8 @@
     <title>修改密码</title>
 </head>
 <body id="loginBody">
-<%@include file="headbar.jsp"%>
-<form action="/onlineTest/changePasswd.action" method="post" class="form-horizontal" role="form" id="modifyForm">
+<%@include file="headbar.jsp" %>
+<form class="form-horizontal" role="form" id="modifyForm">
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon input-addon-mine"><div style="color: darkgrey;">姓名</div></span>
@@ -36,18 +36,46 @@
                    placeholder="在此输入新密码">
         </div>
     </div>
-    <input type="hidden" name="role" value="${role}" />
-    <br><br>
+    <input type="hidden" name="role" value="${role}" id="role"/>
+    <br><br></form>
     <div class="form-group">
         <div class="col-sm-12">
             <div class="col-sm-6">
-                <button type="submit" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                <button id="submit" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </div>
             <div class="col-sm-6">
-                <button type="reset" class="btn btn-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                <button class="btn btn-warning">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </div>
         </div>
     </div>
-</form>
+
+<script>
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            var realname = $("#realname").val();
+            var passwdold = $("#passwdold").val();
+            var passwdnew = $("#passwdnew").val();
+            var role = $("#role").val();
+            $.ajax({
+                type: "post",
+                url: "/onlineTest/changePasswd.action",
+                data: JSON.stringify({
+                    "realname": realname,
+                    "passwdold": passwdold,
+                    "passwdnew": passwdnew,
+                    "role": role
+                }),
+                contentType: "application/json",
+                success: function (result) {
+                    alert(result);
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            })
+        });
+    })
+</script>
 </body>
 </html>
