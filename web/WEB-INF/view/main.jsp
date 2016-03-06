@@ -10,7 +10,7 @@
 <head>
     <title>在线考试系统班级主页</title>
 </head>
-<body>
+<body style="background-color: #2e3e4c">
 <%@include file="headbar.jsp"%>
 <div id="mainNavLeft" class="panel-group">
         <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
