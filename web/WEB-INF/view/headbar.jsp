@@ -39,7 +39,7 @@
     </div>
     <div class="dropdown">
         <div class="notice dropdown-toggle pull-right" id="noticeMenu">
-            <span class="badge" id="noticeNum">3</span>
+            <span class="badge" id="noticeNum">1</span>
             <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;&nbsp;&nbsp;
             公告<span class="caret"></span>
         </div>
