@@ -19,12 +19,12 @@
 <body>
 <div id="mainHeader">
     <div class="dropdown">
-        <div class="avatar dropdown-toggle pull-right" id="dropdownMenu1"
+        <div class="avatar dropdown-toggle pull-right" id="avatarMenu"
              data-toggle="dropdown">
-            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;
             ${realname}<span class="caret"></span>
         </div>
-        <ul class="dropdown-menu pull-right avaterMenu" role="menu" aria-labelledby="dropdownMenu1">
+        <ul class="dropdown-menu pull-right avaterMenu" role="menu" aria-labelledby="avatarMenu">
             <li role="presentation">
                 <a role="menuitem" tabindex="-1" href="#">查看历史成绩</a>
             </li>
@@ -37,6 +37,33 @@
             </li>
         </ul>
     </div>
+    <div class="dropdown">
+        <div class="notice dropdown-toggle pull-right" id="noticeMenu">
+            <span class="badge" id="noticeNum">3</span>
+            <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            公告<span class="caret"></span>
+        </div>
+        <ul class="dropdown-menu pull-right noticeMenu" role="menu" aria-labelledby="noticeMenu">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#">查看历史成绩</a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="/onlineTest/changepwd.action">修改密码</a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="/onlineTest/logout.action">退出</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var noticeMenu = $("#noticeMenu");
+            var x = noticeMenu.offset().left - 1;
+            var y = noticeMenu.offset().top;
+            noticeMenu.attr("data-toggle", "dropdown");
+            $("ul.noticeMenu").css({'top': y, 'left': x});
+        });
+    </script>
 </div>
 </body>
 </html>
