@@ -3,6 +3,13 @@ body{
     overflow-x:hidden;
 }
 
+#footer{
+    width:100%;
+    height:80px;
+    margin:0px;
+    background-color: #2e3e4c;
+}
+
 /*登录框样式*/
 #loginForm{
     text-align: center;
@@ -69,15 +76,49 @@ body{
     border-top: hidden;
 }
 
+.notice{
+    width:200px;
+    height:100%;
+    padding-left: 40px;
+    background-color: #ffbc42;
+    font-size: 18px;
+    color: #ffffff;
+    line-height:50px;
+    overflow:hidden;
+}
+/*公告下拉菜单*/
+.noticeMenu{
+    width:202px;
+    background-color: #ffbc42;
+    color: #ffffff;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    margin-top: 50px;
+    border-top: hidden;
+}
+
+#noticeNum {
+    top:5px;
+    left: 30px;
+    background-color: red;
+    position: relative;
+    float: left;
+    z-index:1
+}
+
+.self-badge{
+    background: red;
+}
+
 /*主页面左nav区域*/
 #mainNavLeft{
     background-color: #2e3e4c;
-    border-right: 1px #218380 solid;
     padding-bottom: 20px;
     overflow:auto;
-    width:200px;
-    min-height:100%;
+    width:250px;
+    min-height: 80%;
     height:auto;
+    margin-bottom: 0px;
 }
 
 /*学科div样式*/
