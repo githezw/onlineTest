@@ -1,8 +1,11 @@
 package cn.online.ssm.service.impl;
 
 import cn.online.ssm.mapper.UserMapper;
+import cn.online.ssm.po.NoticePo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -54,6 +57,28 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public List<NoticePo> getNotice(Integer classno) throws Exception {
+        List<NoticePo> noticeList = new ArrayList<>();
+        try {
+            noticeList = userMapper.getNotice(classno);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return noticeList;
+    }
+
+    @Override
+    public int getNoticeNum(String realname) throws Exception {
+        int noticeNum = 0;
+        try{
+            noticeNum = userMapper.getNoticeNum(realname);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return noticeNum;
     }
 
 }

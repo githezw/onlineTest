@@ -1,6 +1,8 @@
 package cn.online.ssm.controller;
 
 import cn.online.ssm.po.ModifyPwdPo;
+import cn.online.ssm.po.NoticePo;
+import cn.online.ssm.po.StudentPo;
 import cn.online.ssm.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -119,5 +124,29 @@ public class UserController {
             flag = false;
         }
         return flag.toString();
+    }
+
+    /*
+    获取新公告数量
+     */
+    @RequestMapping("/getNoticeNum")
+    @ResponseBody
+    public int getNoticeNum(@RequestBody StudentPo studentPo) throws Exception{
+        String realname = studentPo.getRealname();
+        int noticeNum = 0;
+        noticeNum=userServiceImpl.getNoticeNum(realname);
+        return noticeNum;
+    }
+
+    /*
+    获取班级通知列表信息
+     */
+    @RequestMapping("/getNotice")
+    public @ResponseBody
+    List<NoticePo> getNotice(@RequestBody StudentPo studentPo) throws Exception{
+        List<NoticePo> noticeList =  new ArrayList<NoticePo>();
+        int classno = studentPo.getClassno();
+        noticeList = userServiceImpl.getNotice(classno);
+        return noticeList;
     }
 }

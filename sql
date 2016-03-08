@@ -1,18 +1,26 @@
 #创建学生表
 create table studentInfo(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	realname VARCHAR(6) not null,
+	realname VARCHAR(11) not null,
 	passwd VARCHAR(20) not null,
 	sex VARCHAR(1),
 	classno INT,
-	grade	INT
+	noticenum INT
 );
+
 #创建教师表
 CREATE TABLE teacherInfo (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	realname VARCHAR (6) NOT NULL,
+	realname VARCHAR (11) NOT NULL,
 	passwd VARCHAR (20) NOT NULL,
 	classno INT,
-	grade INT,
-	SUBJECT VARCHAR (10)
+	subject VARCHAR (10)
+);
+
+#创建班级公告表
+CREATE TABLE classNotice(
+	class INT,
+	notice VARCHAR(128),
+	author VARCHAR(20),
+	date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

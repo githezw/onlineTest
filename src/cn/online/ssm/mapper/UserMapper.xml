@@ -14,4 +14,12 @@
     <update id="changePasswd" parameterType="Map">
         UPDATE ${tablename} SET passwd = ${passwd} where realname = ${realname}
     </update>
+
+    <select id="getNotice" parameterType="Integer" resultType="cn.online.ssm.po.NoticePo">
+        select classno,notice,author FROM classnotice WHERE classno=#{classno} ORDER BY pubtime DESC
+    </select>
+
+    <select id="getNoticeNum" parameterType="String" resultType="Integer">
+        SELECT  noticenum FROM  studentinfo WHERE realname = #{realname}
+    </select>
 </mapper>

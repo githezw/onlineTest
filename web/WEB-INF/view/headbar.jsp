@@ -39,19 +39,22 @@
     </div>
     <div class="dropdown">
         <div class="notice dropdown-toggle pull-right" id="noticeMenu">
-            <span class="badge" id="noticeNum">1</span>
+            <span class="badge" id="noticeNum"></span>
             <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;&nbsp;&nbsp;
             公告<span class="caret"></span>
         </div>
         <ul class="dropdown-menu pull-right noticeMenu" role="menu" aria-labelledby="noticeMenu">
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">查看历史成绩</a>
+                <a role="menuitem" tabindex="-1" href="#"></a>
             </li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/changepwd.action">修改密码</a>
+                <a role="menuitem" tabindex="-1" href="#"></a>
             </li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/logout.action">退出</a>
+                <a role="menuitem" tabindex="-1" href="#"></a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#"></a>
             </li>
         </ul>
     </div>
@@ -62,6 +65,55 @@
             var y = noticeMenu.offset().top;
             noticeMenu.attr("data-toggle", "dropdown");
             $("ul.noticeMenu").css({'top': y, 'left': x});
+            var name = $("#avatarMenu").text().trim();
+            $.ajax({
+                type: "post",
+                url: "/onlineTest/getNoticeNum.action",
+                asyn: false,
+                contentType: "application/json",
+                data: JSON.stringify({'realname': name}),
+                success: function (result) {
+                    if(result==0){
+                        $("span#noticeNum").attr("class","badge:empty");
+                    }else{
+                        $("span#noticeNum").html(result);
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+
+            });
+            $.ajax({
+                type: "post",
+                url: "/onlineTest/getNotice.action",
+                contentType: "application/json",
+                data: JSON.stringify({'classno': 1}),
+                success: function (result) {
+                    var i = 0;
+                    var noticeNum = $("#noticeNum").text();
+                    $("ul.noticeMenu").children().each(function () {
+                        if(i<noticeNum) {
+                            if (result[i].notice.length > 12) {
+                                $(this).find("a").html(result[i].notice.substr(0, 11) + "...." + "<span class='badge'>新</span>");
+                            } else {
+                                $(this).find("a").html(result[i].notice.substr(0, 11)+"<span class='badge'>新</span>");
+                            }
+                        }else{
+                            if (result[i].notice.length > 12) {
+                                $(this).find("a").html(result[i].notice.substr(0, 11) + "....");
+                            } else {
+                                $(this).find("a").html(result[i].notice.substr(0, 11));
+                            }
+                        }
+                        i++;
+                    });
+                },
+                error: function () {
+                    alert("error");
+                }
+
+            });
         });
     </script>
 </div>
