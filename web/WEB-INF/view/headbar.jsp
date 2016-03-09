@@ -41,7 +41,7 @@
         <div class="notice dropdown-toggle pull-right" id="noticeMenu">
             <span class="badge" id="noticeNum"></span>
             <span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-            公告<span class="caret"></span>
+            公告&nbsp;<span class="caret"></span>
         </div>
         <ul class="dropdown-menu pull-right noticeMenu" role="menu" aria-labelledby="noticeMenu">
             <li role="presentation">
@@ -60,11 +60,15 @@
     </div>
     <script>
         $(document).ready(function () {
+
+            //设置公告列表位置
             var noticeMenu = $("#noticeMenu");
             var x = noticeMenu.offset().left - 1;
             var y = noticeMenu.offset().top;
             noticeMenu.attr("data-toggle", "dropdown");
             $("ul.noticeMenu").css({'top': y, 'left': x});
+
+            //获取未读公告数量
             var name = $("#avatarMenu").text().trim();
             $.ajax({
                 type: "post",
@@ -84,6 +88,8 @@
                 }
 
             });
+
+            //获取公告列表并设置未读公告样式
             $.ajax({
                 type: "post",
                 url: "/onlineTest/getNotice.action",
@@ -94,16 +100,38 @@
                     var noticeNum = $("#noticeNum").text();
                     $("ul.noticeMenu").children().each(function () {
                         if(i<noticeNum) {
-                            if (result[i].notice.length > 12) {
-                                $(this).find("a").html(result[i].notice.substr(0, 11) + "...." + "<span class='badge'>新</span>");
+                            //给子节点添加跳转
+                            $(this).click(function(){
+                                $("#noticeNum").css("display","none ");
+
+                                //设置数据库未读消息为0
+                                $.ajax({
+                                    type:"post",
+                                    url:"/onlineTest/clearNotice.action",
+                                    contentType:"application/json",
+                                    data:JSON.stringify({"realname":name}),
+                                    success:function(result){
+                                        if(result=="success"){
+                                            $("span#noticeNum").hide();
+                                            window.location.href="/onlineTest/checkNotice.action";
+                                        }else{
+                                            alert("failure");
+                                        }
+                                    }
+                                });
+                            });
+
+                            //未读公告添加提醒
+                            if (result[i].notice.length > 8) {
+                                $(this).find("a").html(result[i].notice.substr(0, 7) + "...." + "<span class='badge self-badge pull-right'>新</span>");
                             } else {
-                                $(this).find("a").html(result[i].notice.substr(0, 11)+"<span class='badge'>新</span>");
+                                $(this).find("a").html(result[i].notice.substr(0, 7)+"<span class='badge self-badge pull-right'>新</span>");
                             }
                         }else{
                             if (result[i].notice.length > 12) {
-                                $(this).find("a").html(result[i].notice.substr(0, 11) + "....");
+                                $(this).find("a").html(result[i].notice.substr(0, 7) + "....");
                             } else {
-                                $(this).find("a").html(result[i].notice.substr(0, 11));
+                                $(this).find("a").html(result[i].notice.substr(0, 7));
                             }
                         }
                         i++;

@@ -46,6 +46,8 @@ body{
     margin-left: 36%;
 }
 
+/*-------------------------------------------------------------*/
+
 /*主页面head区域*/
 #mainHeader{
     background-color: #2e3e4c;
@@ -76,20 +78,22 @@ body{
     border-top: hidden;
 }
 
+/*公告区域*/
 .notice{
     width:200px;
     height:100%;
     padding-left: 40px;
-    background-color: #ffbc42;
+    background-color: #218380;
     font-size: 18px;
     color: #ffffff;
     line-height:50px;
     overflow:hidden;
 }
+
 /*公告下拉菜单*/
 .noticeMenu{
     width:202px;
-    background-color: #ffbc42;
+    background-color: #218380;
     color: #ffffff;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -97,17 +101,20 @@ body{
     border-top: hidden;
 }
 
+/*公告数量提示样式*/
 #noticeNum {
     top:5px;
     left: 30px;
-    background-color: red;
+    background-color: orangered;
     position: relative;
     float: left;
     z-index:1
 }
 
+/*自定义徽章样式*/
 .self-badge{
-    background: red;
+    background-color: orangered;
+    color: #FFFFFF;
 }
 
 /*主页面左nav区域*/
@@ -151,6 +158,8 @@ body{
     background-color: #218380;
 }
 
+/*-------------------------------------------------------------*/
+
 /*表单前缀addon修改宽度保持一致*/
 .input-addon-mine{
     width: 80px;
@@ -163,4 +172,14 @@ body{
     height:300px;
     margin-top:150px;
     margin-left: 38%;
+}
+
+/*-------------------------------------------------------------*/
+
+#noticePanel{
+    left:28%;
+    top: 100px;
+    width: 600px;
+    height: 60%;
+    position: relative;
 }

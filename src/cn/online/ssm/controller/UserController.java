@@ -72,35 +72,6 @@ public class UserController {
     }
 
     /*
-    修改密码表单提交url
-     */
-/*    @RequestMapping("/changePasswd")
-    public ModelAndView changePasswd(String realname, String passwdold, String passwdnew, String role) throws Exception {
-        Boolean flag;
-        boolean validateFlag;
-        String tablename = role + "info";
-        ModelAndView modelAndView = new ModelAndView();
-        HashMap map = new HashMap<String, String>();
-        map.put("realname", "'" + realname + "'");
-        map.put("passwd", "'" + passwdnew + "'");
-        map.put("tablename", tablename);
-        validateFlag = userServiceImpl.userLogin(realname, passwdold, role);
-        if (validateFlag) {
-            try {
-                userServiceImpl.changePasswd(map);
-                flag = true;
-            } catch (Exception e) {
-                flag = false;
-            }
-        } else {
-            flag = false;
-        }
-        modelAndView.addObject("flag", flag);
-        modelAndView.setViewName("chpwdresult");    //转到修改密码结果跳转页面
-        return modelAndView;
-    }*/
-
-    /*
     通过传递json数据修改密码
      */
     @RequestMapping(value = "/changePasswd",method = RequestMethod.POST)

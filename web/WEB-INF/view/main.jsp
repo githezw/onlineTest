@@ -16,7 +16,7 @@
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
          href="#c1"><span
             class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;C&nbsp;<span class="caret"></span>
-        <span class="badge self-badge pull-right">new</span>
+        <%--<span class="badge self-badge pull-right">new</span>--%>
     </div>
     <div id="c1" class="collapse examContent examContent-s1">
         Nihil anim keffiyeh helvetica, craft beer labore wes anderson
@@ -24,7 +24,7 @@
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
          href="#c2"><span
             class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;C++&nbsp;<span class="caret"></span>
-        <span class="badge self-badge pull-right">new</span>
+        <span class="badge self-badge pull-right">新</span>
     </div>
     <div id="c2" class="collapse examContent examContent-s2">
         Nihil anim keffiyeh helvetica, craft beer labore wes anderson
@@ -32,7 +32,7 @@
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
          href="#java"><span
             class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Java&nbsp;<span class="caret"></span>
-        <span class="badge self-badge pull-right">new</span>
+        <%--<span class="badge self-badge pull-right">new</span>--%>
     </div>
     <div id="java" class="collapse examContent examContent-s3">
         Nihil anim keffiyeh helvetica, craft beer labore wes anderson
@@ -40,7 +40,7 @@
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
          href="#sql"><span
             class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Sql&nbsp;<span class="caret"></span>
-        <span class="badge self-badge pull-right">new</span>
+        <%--<span class="badge self-badge pull-right">new</span>--%>
     </div>
     <div id="sql" class="collapse examContent examContent-s1">
         Nihil anim keffiyeh helvetica, craft beer labore wes anderson
@@ -48,7 +48,7 @@
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
          href="#net"><span
             class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Network&nbsp;<span class="caret"></span>
-        <span class="badge self-badge pull-right">new</span>
+        <%--<span class="badge self-badge pull-right">new</span>--%>
     </div>
     <div id="net" class="collapse examContent examContent-s2">
         Nihil anim keffiyeh helvetica, craft beer labore wes anderson
@@ -56,7 +56,7 @@
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
          href="#asp"><span
             class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Asp .net&nbsp;<span class="caret"></span>
-        <span class="badge self-badge pull-right">new</span>
+        <%--<span class="badge self-badge pull-right">new</span>--%>
     </div>
     <div id="asp" class="collapse examContent examContent-s3">
         Nihil anim keffiyeh helvetica, craft beer labore wes anderson
