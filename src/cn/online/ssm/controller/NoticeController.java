@@ -36,7 +36,7 @@ public class NoticeController {
 
     /*
     设置未读消息为0
-     */
+
     /*
     获取班级通知列表信息
      */

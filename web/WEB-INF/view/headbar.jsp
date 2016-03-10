@@ -102,7 +102,7 @@
                         if(i<noticeNum) {
                             //给子节点添加跳转
                             $(this).click(function(){
-                                $("#noticeNum").css("display","none ");
+                                //$("#noticeNum").css("display","none ");
 
                                 //设置数据库未读消息为0
                                 $.ajax({
