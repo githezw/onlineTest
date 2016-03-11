@@ -52,25 +52,10 @@
     </div>
 </form>
 <div class="splitLine"></div>
-<%--<script>
-    $("#submit").click(function(){
-        var realname = $("#realname").val();
-        var passwdTemp = $("#passwdTemp").val();
-        var role = $("#role").val();
-        $.ajax({
-            type:"POST",
-            url:"/onlineTest/login.action",
-            data:JSON.stringify({'realname':realname,'passwdTemp':passwdTemp,'role':role}),
-            contentType:"application/json",
-            success:function(result) {
-                if (result == "success") {
-                    window.location.href = "/WEB-INF/view/main.jsp";
-                } else {
-                    alert(result);
-                }
-            }
-        })
+<script>
+    $(document).ready(function () {
+        roleSelect();
     });
-    </script>--%>
+</script>
 </body>
 </html>

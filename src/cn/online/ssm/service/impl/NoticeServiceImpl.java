@@ -2,6 +2,7 @@ package cn.online.ssm.service.impl;
 
 import cn.online.ssm.mapper.NoticeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 
 /**
  * Created by hezw on 2016/3/9.
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class NoticeServiceImpl implements NoticeService {
 
-    @Autowired
+    @Autowired(required = false)
     private NoticeMapper noticeMapper;
 
     @Override

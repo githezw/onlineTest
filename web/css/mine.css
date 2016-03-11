@@ -19,10 +19,12 @@ body{
     margin-left: 38%;
 }
 
-/*登陆界面背景*/
+/*登陆界面背景  背景图自适应拉伸*/
 #loginBody{
     background: url("../image/loginBackground.jpg");
-    background-size: 100% 100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /*登录界面大标题*/
@@ -181,5 +183,7 @@ body{
     top: 100px;
     width: 600px;
     height: 60%;
+    margin-bottom: 10px;
     position: relative;
+
 }
