@@ -26,22 +26,14 @@ public class UserServiceImpl implements UserService {
         if ("student".equals(role)) {
             try {
                 String passwd = userMapper.stuLogin(realname);
-                if (passwd.equals(passwdTemp)) {
-                    flag = true;
-                } else {
-                    flag = false;
-                }
+                flag = passwd.equals(passwdTemp);
             } catch (Exception e) {
                 flag = false;
             }
         } else {
             try {
                 String passwd = userMapper.teaLogin(realname);
-                if (passwd.equals(passwdTemp)) {
-                    flag = true;
-                } else {
-                    flag = false;
-                }
+                flag = passwd.equals(passwdTemp);
             } catch (Exception e) {
                 flag = false;
             }
