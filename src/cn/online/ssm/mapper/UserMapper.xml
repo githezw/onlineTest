@@ -4,11 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.online.ssm.mapper.UserMapper">
-    <select id="stuLogin" parameterType="String" resultType="string">
+    <select id="stuLogin" parameterType="String" resultType="String">
         SELECT passwd FROM studentinfo WHERE realname = #{realname}
     </select>
-    <select id="teaLogin" parameterType="String" resultType="string">
+    <select id="teaLogin" parameterType="String" resultType="String">
         SELECT passwd FROM teacherinfo WHERE realname = #{realname}
+    </select>
+
+    <select id="getClassno" parameterType="String" resultType="Integer">
+        SELECT classno FROM studentinfo WHERE realname=#{realname}
     </select>
 
     <update id="changePasswd" parameterType="Map">

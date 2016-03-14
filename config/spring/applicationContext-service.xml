@@ -22,4 +22,7 @@
 
     <bean id="noticeServiceImpl" class="cn.online.ssm.service.impl.NoticeServiceImpl">
     </bean>
+
+    <bean id="testServiceImpl" class="cn.online.ssm.service.impl.TestServiceImpl">
+    </bean>
 </beans>

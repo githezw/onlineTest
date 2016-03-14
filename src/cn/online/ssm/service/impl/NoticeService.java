@@ -6,4 +6,5 @@ package cn.online.ssm.service.impl;
 public interface NoticeService {
 
     void clearNotice(String realname) throws Exception;
+
 }

@@ -14,6 +14,9 @@ public interface UserService {
     //用户登录验证
     Boolean userLogin(String realname, String passwdTemp, String role) throws Exception;
 
+    //获取学生班级号
+    int getClassno(String realname) throws Exception;
+
     //修改密码
     void changePasswd(Map<String, String> map) throws Exception;
 

@@ -2,14 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.online.ssm.mapper.NoticeMapper">
-    <update id="clearNotice" parameterType="String">
-      UPDATE studentinfo set noticenum = 0 where realname=#{realname}
-    </update>
-
-    <update id="addTable" parameterType="String">
+<mapper namespace="cn.online.ssm.mapper.TestMapper">
+    <update id="addTestCategory" parameterType="cn.online.ssm.po.TestCategoryPo">
         CREATE TABLE IF NOT EXISTS ${tableName} (
-        ${id} INT AUTO_INCREMENT PRIMARY KEY,
+        id INT AUTO_INCREMENT PRIMARY KEY,
         ${testName} VARCHAR(10),
         ${testTime} DATE ,
         ${author} VARCHAR(11)

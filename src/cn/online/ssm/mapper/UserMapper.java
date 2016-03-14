@@ -13,6 +13,8 @@ public interface UserMapper {
 
     String teaLogin(String realname) throws Exception;
 
+    int getClassno(String realname) throws Exception;
+
     void changePasswd(Map<String,String> map) throws Exception;
 
     List<NoticePo> getNotice(Integer classno) throws Exception;
