@@ -23,15 +23,17 @@
         &nbsp;&nbsp;&nbsp;返回&nbsp;&nbsp;&nbsp;</button>
     <br><br><br><br><br>
 </div>
+<input type="hidden" id="classno2" value="${classno}">
 <script>
     $(document).ready(function () {
 
         //获取全部公告列表 并标注今日发布的公告
+        var classno2 = $("#classno2").val();
         $.ajax({
             type: "post",
             url: "/onlineTest/getNotice.action",
             contentType: "application/json",
-            data: JSON.stringify({'classno': 1}),
+            data: JSON.stringify({'classno': classno2}),
             success: function (result) {
                 var date = new Date();
                 var year = date.getFullYear();
