@@ -27,8 +27,7 @@ public class NoticeController {
     全部公告显示页面
     */
     @RequestMapping("/checkNotice")
-    public ModelAndView checkNotice(String realname) throws Exception {
-        List<NoticePo> noticePoList = new ArrayList<>();
+    public ModelAndView checkNotice() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("notice/allnotice");
         return modelAndView;
@@ -53,12 +52,20 @@ public class NoticeController {
     }
 
     /*
+    添加公告页面
+     */
+    @RequestMapping("/addNoticePage")
+    public String addNoticePage() throws Exception {
+        return "notice/addNotice";
+    }
+
+    /*
     添加公告
      */
     @RequestMapping("/addNotice")
     public
     @ResponseBody
-    String addNotice(NoticePo noticePo) throws Exception {
+    String addNotice(@RequestBody NoticePo noticePo) throws Exception {
         String flag;
         try {
             noticeServiceImpl.addNotice(noticePo);

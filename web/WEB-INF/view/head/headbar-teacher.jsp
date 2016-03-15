@@ -29,7 +29,7 @@
                 <a role="menuitem" tabindex="-1" href="#">添加考试</a>
             </li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">添加公告</a>
+                <a role="menuitem" tabindex="-1" href="/onlineTest/addNoticePage.action">添加公告</a>
             </li>
             <li role="presentation">
                 <a role="menuitem" tabindex="-1" href="/onlineTest/changepwd.action">修改密码</a>
@@ -43,7 +43,7 @@
 </div>
 <input type="hidden" id="classno" value="${classno}">
 <script>
-    $(document).ready(function () {
+    /*$(document).ready(function () {
 
         //设置公告列表位置
         var noticeMenu = $("#noticeMenu");
@@ -51,7 +51,7 @@
         var y = noticeMenu.offset().top;
         noticeMenu.attr("data-toggle", "dropdown");
         $("ul.noticeMenu").css({'top': y, 'left': x});
-    });
+    });*/
 </script>
 
 </body>

@@ -10,12 +10,21 @@ import java.sql.Timestamp;
  */
 
 public class NoticePo {
+    private Integer id;
     private Integer classno;
     private String notice;
     private String author;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String pubtime;
 
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public Integer getClassno() {
         return classno;
     }
