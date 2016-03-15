@@ -3,7 +3,6 @@ package cn.online.ssm.controller;
 import cn.online.ssm.po.NoticePo;
 import cn.online.ssm.po.StudentPo;
 import cn.online.ssm.service.impl.NoticeServiceImpl;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,28 +30,42 @@ public class NoticeController {
     public ModelAndView checkNotice(String realname) throws Exception {
         List<NoticePo> noticePoList = new ArrayList<>();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("allnotice");
+        modelAndView.setViewName("notice/allnotice");
         return modelAndView;
     }
 
     /*
     设置未读消息为0
-
-    /*
-    获取班级通知列表信息
      */
     @RequestMapping("/clearNotice")
-    public @ResponseBody
-    String getNotice(@RequestBody StudentPo studentPo) throws Exception{
+    public
+    @ResponseBody
+    String getNotice(@RequestBody StudentPo studentPo) throws Exception {
         String flag;
         String realname = studentPo.getRealname();
-        try{
+        try {
             noticeServiceImpl.clearNotice(realname);
             flag = "success";
-        }catch(Exception e){
+        } catch (Exception e) {
             flag = "failure";
         }
         return flag;
     }
 
+    /*
+    添加公告
+     */
+    @RequestMapping("/addNotice")
+    public
+    @ResponseBody
+    String addNotice(NoticePo noticePo) throws Exception {
+        String flag;
+        try {
+            noticeServiceImpl.addNotice(noticePo);
+            flag = "success";
+        } catch (Exception e) {
+            flag = "failure";
+        }
+        return flag;
+    }
 }

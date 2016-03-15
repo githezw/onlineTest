@@ -10,7 +10,7 @@
     <title>班级公告</title>
 </head>
 <body id="loginBody">
-<%@include file="headbar.jsp" %>
+<%@include file="../common/headbar.jsp" %>
 <div id="noticePanel">
     <div class="panel panel-default">
         <div class="panel-heading">班级公告</div>

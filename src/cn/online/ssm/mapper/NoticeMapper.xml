@@ -15,4 +15,8 @@
         ${author} VARCHAR(11)
         )
     </update>
+
+    <insert id="addNotice" parameterType="cn.online.ssm.po.NoticePo">
+        INSERT INTO classnotice VALUE (#{classno},#{notice},#{author},#{pubtime})
+    </insert>
 </mapper>

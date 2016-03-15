@@ -14,7 +14,7 @@ public class NoticePo {
     private String notice;
     private String author;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date pubtime;
+    private String pubtime;
 
     public Integer getClassno() {
         return classno;
@@ -40,11 +40,11 @@ public class NoticePo {
         this.author = author;
     }
 
-    public Date getPubtime() {
+    public String getPubtime() {
         return pubtime;
     }
 
-    public void setPubtime(Date pubtime) {
+    public void setPubtime(String pubtime) {
         this.pubtime = pubtime;
     }
 }

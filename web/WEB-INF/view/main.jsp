@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: hezw
@@ -11,7 +12,7 @@
     <title>在线考试系统班级主页</title>
 </head>
 <body>
-<%@include file="headbar.jsp" %>
+<%@include file="common/headbar.jsp" %>
 <div id="mainNavLeft" class="panel-group">
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
          href="#c1"><span

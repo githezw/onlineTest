@@ -64,6 +64,7 @@ public class UserController {
     public String logout(HttpSession session) throws Exception {
         session.removeAttribute("realname");
         session.removeAttribute("role");
+        session.removeAttribute("classno");
         return "redirect:/index.action";
     }
 
@@ -72,7 +73,7 @@ public class UserController {
      */
     @RequestMapping("/changepwd")
     public String changepwd() throws Exception {
-        return "chpasswd";
+        return "chpwd/chpasswd";
     }
 
     /*

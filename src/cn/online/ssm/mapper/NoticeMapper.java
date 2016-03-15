@@ -1,5 +1,6 @@
 package cn.online.ssm.mapper;
 
+import cn.online.ssm.po.NoticePo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -9,5 +10,8 @@ public interface NoticeMapper {
 
     //设置未读消息数量为0
     void clearNotice(String realname) throws Exception;
+
+    //添加公告
+    void addNotice(NoticePo noticePo) throws Exception;
 
 }

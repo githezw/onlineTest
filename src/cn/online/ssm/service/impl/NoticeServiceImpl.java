@@ -1,6 +1,7 @@
 package cn.online.ssm.service.impl;
 
 import cn.online.ssm.mapper.NoticeMapper;
+import cn.online.ssm.po.NoticePo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 
@@ -18,6 +19,15 @@ public class NoticeServiceImpl implements NoticeService {
         try {
             noticeMapper.clearNotice(realname);
         } catch (Exception e) {
+        }
+    }
+
+    @Override
+    public void addNotice(NoticePo noticePo) throws Exception {
+        try {
+            noticeMapper.addNotice(noticePo);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

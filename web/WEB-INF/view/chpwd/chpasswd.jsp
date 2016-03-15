@@ -13,7 +13,7 @@
     <title>修改密码</title>
 </head>
 <body id="loginBody">
-<%@include file="headbar.jsp" %>
+<%@include file="../common/headbar.jsp" %>
 <form class="form-horizontal" role="form" id="modifyForm" style="height: 180px;">
     <div class="form-group">
         <div class="input-group">
