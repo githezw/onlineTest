@@ -91,7 +91,7 @@
         });
 
         //获取公告列表  并设置未读公告样式
-        var classno = $("#classno").val();
+            var classno = $("#classno").val();
         $.ajax({
             type: "post",
             url: "/onlineTest/getNotice.action",

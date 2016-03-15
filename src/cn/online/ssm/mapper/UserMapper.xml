@@ -20,7 +20,7 @@
     </update>
 
     <select id="getNotice" parameterType="Integer" resultType="cn.online.ssm.po.NoticePo">
-        select classno,notice,author,pubtime FROM classnotice WHERE classno=#{classno} ORDER BY pubtime DESC
+        select id,classno,notice,author,pubtime FROM classnotice WHERE classno=#{classno} ORDER BY pubtime DESC
     </select>
 
     <select id="getNoticeNum" parameterType="String" resultType="Integer">

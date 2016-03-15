@@ -21,6 +21,7 @@ CREATE TABLE teacherInfo (
 
 #创建班级公告表
 CREATE TABLE classnotice(
+    id INT AUTO_INCREMENT,
 	classno INT,
 	notice VARCHAR(128),
 	author VARCHAR(20),
