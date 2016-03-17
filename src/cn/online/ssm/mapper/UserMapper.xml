@@ -11,8 +11,8 @@
         SELECT passwd FROM teacherinfo WHERE realname = #{realname}
     </select>
 
-    <select id="getClassno" parameterType="String" resultType="Integer">
-        SELECT classno FROM studentinfo WHERE realname=#{realname}
+    <select id="getClassno" parameterType="Map" resultType="Integer">
+        SELECT classno FROM ${tablename} WHERE realname=#{realname}
     </select>
 
     <update id="changePasswd" parameterType="Map">

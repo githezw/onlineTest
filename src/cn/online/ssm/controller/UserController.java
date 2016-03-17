@@ -45,7 +45,11 @@ public class UserController {
     public String login(String realname, String passwdTemp, String role, HttpSession session) throws Exception {
         boolean flag = userServiceImpl.userLogin(realname, passwdTemp, role);
         if (flag) {
-            int classno = userServiceImpl.getClassno(realname);
+            String tablename=role+"info";
+            Map<String,String> map = new HashMap<String,String>();
+            map.put("tablename",tablename);
+            map.put("realname",realname);
+            int classno = userServiceImpl.getClassno(map);
             session.setAttribute("realname", realname);
             session.setAttribute("role", role);
             if(classno!=0){

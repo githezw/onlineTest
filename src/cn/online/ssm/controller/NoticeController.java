@@ -75,4 +75,12 @@ public class NoticeController {
         }
         return flag;
     }
+
+    /*
+    修改公告页面
+     */
+    @RequestMapping("/modifyNoticePage")
+    public String modifyNoticePage() throws Exception {
+        return "notice/modifyNotice";
+    }
 }

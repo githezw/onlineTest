@@ -178,6 +178,7 @@ body{
 
 /*-------------------------------------------------------------*/
 
+/*公告面板样式*/
 #noticePanel{
     left:28%;
     top: 100px;
@@ -188,6 +189,7 @@ body{
 
 }
 
+/*多级下拉菜单样式*/
 /*-------------------------------------------------------------*/
 
 .dropdown-submenu {
@@ -196,11 +198,11 @@ body{
 .dropdown-submenu > .dropdown-menu {
     top: 0;
     left: 100%;
-    margin-top: -6px;
-    margin-left: -1px;
-    -webkit-border-radius: 0 6px 6px 6px;
-    -moz-border-radius: 0 6px 6px;
-    border-radius: 0 6px 6px 6px;
+    margin-top: 0px;
+    margin-left: -200%;
+    -webkit-border-radius: 6px 0px 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
 }
 .dropdown-submenu:hover > .dropdown-menu {
     display: block;
@@ -231,3 +233,4 @@ body{
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+/*-------------------------------------------------------------*/

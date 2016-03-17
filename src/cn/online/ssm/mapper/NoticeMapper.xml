@@ -17,6 +17,6 @@
     </update>
 
     <insert id="addNotice" parameterType="cn.online.ssm.po.NoticePo">
-        INSERT INTO classnotice VALUE (#{classno},#{notice},#{author},#{pubtime})
+        INSERT INTO classnotice(id,classno,notice,author,pubtime) VALUE (NULL,#{classno},#{notice},#{author},#{pubtime})
     </insert>
 </mapper>

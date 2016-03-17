@@ -42,10 +42,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int getClassno(String realname) throws Exception {
+    public int getClassno(Map<String,String> map) throws Exception {
         int classno = 0;
         try {
-            classno = userMapper.getClassno(realname);
+            classno = userMapper.getClassno(map);
 
         } catch (Exception e) {
             e.printStackTrace();

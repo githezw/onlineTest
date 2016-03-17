@@ -26,14 +26,14 @@
         </div>
         <ul class="dropdown-menu pull-right avaterMenu" role="menu" aria-labelledby="avatarMenu">
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">查看历史成绩</a>
+                <a role="menuitem" tabindex="-1" href="#"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;&nbsp;查看历史成绩</a>
             </li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/changepwd.action">修改密码</a>
+                <a role="menuitem" tabindex="-1" href="/onlineTest/changepwd.action"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;&nbsp;修改密码</a>
             </li>
             <li role="presentation" class="divider"></li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/logout.action">退出</a>
+                <a role="menuitem" tabindex="-1" href="/onlineTest/logout.action"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;&nbsp;退出</a>
             </li>
         </ul>
     </div>

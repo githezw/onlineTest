@@ -18,92 +18,41 @@
 </head>
 <body>
 <div id="mainHeader">
-    <%--<div class="dropdown">
-        <div class="avatar dropdown-toggle pull-right" id="avatarMenu"
-             data-toggle="dropdown">
+    <div class="dropdown">
+        <div id="avatarMenu" data-toggle="dropdown" class="avatar pull-right" data-target="#"
+             href="javascript:;">
             <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;
             ${realname}<span class="caret"></span>
         </div>
-        <ul class="dropdown-menu pull-right avaterMenu" role="menu" aria-labelledby="avatarMenu">
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">添加考试</a>
-            </li>
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/addNoticePage.action">添加公告</a>
-            </li>
-            </li>
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/changepwd.action">修改密码</a>
-            </li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/logout.action">退出</a>
-            </li>
-        </ul>
-    </div>--%>
-    <%--<div class="dropdown">
-        <div class="avatar pull-right" id="avatarMenu"
-             data-toggle="dropdown">
-            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-            ${realname}<span class="caret"></span>
-        </div>
-        <ul class="dropdown-menu multi-level pull-right avaterMenu" role="menu" aria-labelledby="avatarMenu">
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">添加考试</a>
-            </li>
-            &lt;%&ndash;<li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/addNoticePage.action">添加公告</a>
-            </li>&ndash;%&gt;
+        <ul class="dropdown-menu avaterMenu pull-right multi-level" role="menu" aria-labelledby="avatarMenu">
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="javascript:;">公告操作</a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="#">查看所有公告</a>
-                    </li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="#">新增公告</a>
-                    </li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="#">修改公告</a>
-                    </li>
-                    <li>
-                        <a role="menuitem" tabindex="-1" href="#">删除公告</a>
-                    </li>
+                <a tabindex="-1" href="javascript:;"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;考试选项</a>
+                <ul class="dropdown-menu avaterMenu">
+                    <li><a tabindex="-1" href="#"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;&nbsp;查看以往考试</a></li>
+                    <li><a tabindex="-1" href="#"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;新增考试</a></li>
+                    <li><a tabindex="-1" href="javascript:;"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;修改考题</a></li>
+                    <li><a tabindex="-1" href="javascript:;"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;删除考试</a></li>
+                </ul>
+            </li>
+            <li class="dropdown-submenu">
+                <a tabindex="-1" href="javascript:;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;公告选项</a>
+                <ul class="dropdown-menu avaterMenu">
+                    <li><a tabindex="-1" href="/onlineTest/checkNotice.action"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;&nbsp;查看全部公告</a></li>
+                    <li><a tabindex="-1" href="/onlineTest/addNoticePage.action"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;新增公告</a></li>
+                    <li><a tabindex="-1" href="/onlineTest/modifyNoticePage.action"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;修改公告</a></li>
+                    <li><a tabindex="-1" href="javascript:;"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;删除公告</a></li>
                 </ul>
             </li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/changepwd.action">修改密码</a>
+                <a role="menuitem" tabindex="-1" href="/onlineTest/changepwd.action"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;&nbsp;修改密码</a>
             </li>
             <li class="divider"></li>
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/onlineTest/logout.action">退出</a>
+                <a role="menuitem" tabindex="-1" href="/onlineTest/logout.action"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;&nbsp;退出</a>
             </li>
+
         </ul>
-    </div>--%>
-        <div class="dropdown">
-            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
-               href="javascript:;">
-                下拉多级菜单 <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                <li><a href="javascript:;">一级菜单</a></li>
-                <li><a href="javascript:;">一级菜单</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-submenu">
-                    <a tabindex="-1" href="javascript:;">一级菜单</a>
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="javascript:;">二级菜单</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-submenu">
-                            <a href="javascript:;">二级菜单</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:;">三级菜单</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+    </div>
 </div>
 <input type="hidden" id="classno" value="${classno}">
 <script>
