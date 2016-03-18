@@ -83,4 +83,21 @@ public class NoticeController {
     public String modifyNoticePage() throws Exception {
         return "notice/modifyNotice";
     }
+
+    /*
+    修改公告
+     */
+    @RequestMapping("/updateNotice")
+    public
+    @ResponseBody
+    String updateNotice(@RequestBody NoticePo noticePo) throws Exception {
+        String flag;
+        try {
+            noticeServiceImpl.updateNotice(noticePo);
+            flag = "success";
+        } catch (Exception e) {
+            flag = "failure";
+        }
+        return flag;
+    }
 }

@@ -27,3 +27,32 @@ function pageScroll()
     //判断当页面到达顶部，取消延时代码（否则页面滚动到顶部会无法再向下正常浏览页面）
     if(sTop==0) clearTimeout(scrolldelay);
 }
+
+//修改公告页面实现点击可重复编辑,并且更新到数据库中
+function modifyNoticeFun() {
+    var clickNode = $(this);
+    var textTemp = clickNode.text();
+    clickNode.html("");
+    var inputNode = $("<input>");
+    inputNode.attr("class", "form-control");
+    inputNode.val(textTemp);
+    clickNode.append(inputNode);
+    clickNode.find("input").focus();
+    inputNode.blur(function () {
+        var textNew = $(this).val();
+        clickNode.html(textNew);
+        clickNode.click(modifyNoticeFun);
+        var id = clickNode.parent().find("input").val();
+        /*var notice = ;
+        var author = ;
+        var pubtime = ;*/
+        $.ajax({
+            type:"post",
+            contentType:"application/json",
+            data:{},
+            url:"/onlineTest/updateNotice.action"
+        });
+        alert(clickNode.parent().find("input").val());
+    });
+    clickNode.unbind("click");
+}

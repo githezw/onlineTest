@@ -30,4 +30,13 @@ public class NoticeServiceImpl implements NoticeService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void updateNotice(NoticePo noticePo) throws Exception {
+        try {
+            noticeMapper.updateNotice(noticePo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

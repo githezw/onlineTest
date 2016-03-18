@@ -19,4 +19,13 @@
     <insert id="addNotice" parameterType="cn.online.ssm.po.NoticePo">
         INSERT INTO classnotice(id,classno,notice,author,pubtime) VALUE (NULL,#{classno},#{notice},#{author},#{pubtime})
     </insert>
+
+    <update id="updateNotice" parameterType="cn.online.ssm.po.NoticePo">
+        UPDATE classnotice
+        SET notice = #{notice},
+            author = #{author},
+            pubtime = #{pubtime}
+        WHERE
+	        id = #{id};
+    </update>
 </mapper>

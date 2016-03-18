@@ -12,4 +12,7 @@ public interface NoticeService {
 
     //添加公告
     void addNotice(NoticePo noticePo) throws Exception;
+
+    //更新公告
+    void updateNotice(NoticePo noticePo) throws Exception;
 }

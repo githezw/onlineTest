@@ -8,8 +8,36 @@
 <html>
 <head>
     <title>修改公告</title>
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js"></script>
 </head>
 <body id="loginBody">
+<%--
+<table border="1px">
+<tr>
+    <td>12345</td>
+    <td>67890</td>
+</tr>
+    </table>
+<script>
+    $(document).ready(function(){
+        $("td").click(tdclick);
+        function tdclick(){
+            var clickNode = $(this);
+            var contentTemp = clickNode.text();
+            clickNode.html("");
+            var inputNode = $("<input>");
+            inputNode.val(contentTemp);
+            clickNode.append(inputNode);
+            inputNode.blur(function(){
+                var contentNew = $(this).val();
+                clickNode.html(contentNew);
+                clickNode.click(tdclick);
+            });
+            $(this).unbind("click");
+        }
+    });
+    </script>--%>
 <%@include file="../common/headbar.jsp" %>
 <div id="noticePanel">
     <div class="panel panel-default">
@@ -59,26 +87,8 @@
             }
         });
 
-        //鼠标点击变输入框进行修改
-        $("ul.list-group").children("li").children().click(function () {
-            var textTemp = $(this).text();
-            var htmlTemp = $(this).html();
-            $(this).html("");
-            var inputString = $("<input>");
-            inputString.attr("class","form-control");
-            inputString.val(textTemp);
-            $(this).append(inputString);
-//            $(this).html(inputString);
-            $(this).blur(function(){
-                /*alert($(this).html());
-                var textNew = $(this).find("input").val();
-                var node = $(htmlTemp);
-                $(this).html("");
-                $(this).appendChild(node);
-                $(this).children().text(textNew);*!/*/
-            });*/
-            $(this).unbind("click");
-        });
+        //修改公告页面实现点击可重复编辑,并且更新到数据库中
+        $("ul.list-group").children("li").children().click(modifyNoticeFun);
 
         //返回按钮
         $("#backButton").click(function () {
