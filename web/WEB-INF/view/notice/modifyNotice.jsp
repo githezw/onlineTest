@@ -76,12 +76,12 @@
                     $("ul.list-group").append('<li class="list-group-item" style="background-color: #D4DFE6">' +
                             '<input type="hidden" value="' +
                             result[i].id +
-                            '">' + '<div class="pull-left">' +
+                            '">' + '<div class="pull-left" name="noticeInput">' +
                             result[i].notice + '</div>' +
-                            '<div class="pull-right" style="font-size: small">' +
+                            '<div class="pull-right" style="font-size: small" name="pubtimeInput">' +
                             result[i].pubtime +
-                            '</div><br><br><div style="text-align:right">—— ' +
-                            result[i].author +
+                            '</div><br><br><div style="text-align:right">—— ' +'<span name="authorInput">'
+                            +result[i].author +'</span>'+
                             '</div></li>');
                 }
             }
