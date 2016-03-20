@@ -43,16 +43,26 @@ function modifyNoticeFun() {
         var id = clickNode.parent().find("input").val();
         var notice = clickNode.parent().find("div[name='noticeInput']").text();
         var pubtime = clickNode.parent().find("div[name='pubtimeInput']").text();
-        var author = clickNode.parent().find("span[name='authorInput']").text();
-                alert(id);
-         alert(notice);
-         alert(pubtime);
-         alert(author);
+        var author = (clickNode.parent().find("div[name='authorInput']").text()).substr(3);
         $.ajax({
             type: "post",
             contentType: "application/json",
             data: JSON.stringify({'id': id, 'notice': notice, 'author': author, 'pubtime': pubtime}),
-            url: "/onlineTest/updateNotice.action"
+            url: "/onlineTest/updateNotice.action",
+            success:function(result){
+                if (result == "success") {
+                    $("div.modal-body").html("修改成功");
+                    $("#model-button").click(function () {
+                        $('#resultModel').modal('hide')
+                    });
+                }
+                else {
+                    $("div.modal-body").html("修改失败");
+                    $("#model-button").click(function () {
+                        $('#resultModel').modal('hide')
+                    });
+                }
+            }
         });
         //alert(clickNode.parent().find("input").val());
     });
