@@ -51,12 +51,14 @@ function modifyNoticeFun() {
             url: "/onlineTest/updateNotice.action",
             success:function(result){
                 if (result == "success") {
+                    $('#resultModel').modal('show');
                     $("div.modal-body").html("修改成功");
                     $("#model-button").click(function () {
                         $('#resultModel').modal('hide')
                     });
                 }
                 else {
+                    $('#resultModel').modal('show');
                     $("div.modal-body").html("修改失败");
                     $("#model-button").click(function () {
                         $('#resultModel').modal('hide')
@@ -64,7 +66,6 @@ function modifyNoticeFun() {
                 }
             }
         });
-        //alert(clickNode.parent().find("input").val());
     });
     clickNode.unbind("click");
 }
