@@ -40,7 +40,7 @@
                     <li><a tabindex="-1" href="/onlineTest/checkNotice.action"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;&nbsp;查看全部公告</a></li>
                     <li><a tabindex="-1" href="/onlineTest/addNoticePage.action"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;新增公告</a></li>
                     <li><a tabindex="-1" href="/onlineTest/modifyNoticePage.action"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;修改公告</a></li>
-                    <li><a tabindex="-1" href="javascript:;"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;删除公告</a></li>
+                    <li><a tabindex="-1" href="/onlineTest/deleteNoticePage.action"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;删除公告</a></li>
                 </ul>
             </li>
             <li role="presentation">

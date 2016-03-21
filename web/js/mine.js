@@ -40,32 +40,34 @@ function modifyNoticeFun() {
         var textNew = $(this).val();
         clickNode.html(textNew);
         clickNode.click(modifyNoticeFun);
-        var id = clickNode.parent().find("input").val();
-        var notice = clickNode.parent().find("div[name='noticeInput']").text();
-        var pubtime = clickNode.parent().find("div[name='pubtimeInput']").text();
-        var author = (clickNode.parent().find("div[name='authorInput']").text()).substr(3);
-        $.ajax({
-            type: "post",
-            contentType: "application/json",
-            data: JSON.stringify({'id': id, 'notice': notice, 'author': author, 'pubtime': pubtime}),
-            url: "/onlineTest/updateNotice.action",
-            success:function(result){
-                if (result == "success") {
-                    $('#resultModel').modal('show');
-                    $("div.modal-body").html("修改成功");
-                    $("#model-button").click(function () {
-                        $('#resultModel').modal('hide')
-                    });
+        if (textTemp != textNew) {
+            var id = clickNode.parent().find("input").val();
+            var notice = clickNode.parent().find("div[name='noticeInput']").text();
+            var pubtime = clickNode.parent().find("div[name='pubtimeInput']").text();
+            var author = (clickNode.parent().find("div[name='authorInput']").text()).substr(3);
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                data: JSON.stringify({'id': id, 'notice': notice, 'author': author, 'pubtime': pubtime}),
+                url: "/onlineTest/updateNotice.action",
+                success: function (result) {
+                    if (result == "success") {
+                        $('#resultModel').modal('show');
+                        $("div.modal-body").html("修改成功");
+                        $("#model-button").click(function () {
+                            $('#resultModel').modal('hide')
+                        });
+                    }
+                    else {
+                        $('#resultModel').modal('show');
+                        $("div.modal-body").html("修改失败");
+                        $("#model-button").click(function () {
+                            $('#resultModel').modal('hide')
+                        });
+                    }
                 }
-                else {
-                    $('#resultModel').modal('show');
-                    $("div.modal-body").html("修改失败");
-                    $("#model-button").click(function () {
-                        $('#resultModel').modal('hide')
-                    });
-                }
-            }
-        });
+            });
+        }
     });
     clickNode.unbind("click");
 }

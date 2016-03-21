@@ -39,4 +39,13 @@ public class NoticeServiceImpl implements NoticeService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void deleteNotice(int id) throws Exception {
+        try {
+            noticeMapper.deleteNotice(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

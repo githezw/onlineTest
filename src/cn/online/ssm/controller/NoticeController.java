@@ -100,4 +100,30 @@ public class NoticeController {
         }
         return flag;
     }
+
+    /*
+    删除公告页面
+     */
+    @RequestMapping("/deleteNoticePage")
+    public String deleteNoticePage() throws Exception {
+        return "notice/deleteNotice";
+    }
+
+    /*
+    删除公告
+     */
+    @RequestMapping("/deleteNotice")
+    public
+    @ResponseBody
+    String delelteNotice(@RequestBody NoticePo noticePo) throws Exception {
+        String flag;
+        int id = noticePo.getId();
+        try {
+            noticeServiceImpl.deleteNotice(id);
+            flag = "success";
+        } catch (Exception e) {
+            flag = "failure";
+        }
+        return flag;
+    }
 }

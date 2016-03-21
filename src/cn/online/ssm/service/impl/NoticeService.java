@@ -15,4 +15,7 @@ public interface NoticeService {
 
     //更新公告
     void updateNotice(NoticePo noticePo) throws Exception;
+
+    //删除公告
+    void deleteNotice(int id) throws Exception;
 }

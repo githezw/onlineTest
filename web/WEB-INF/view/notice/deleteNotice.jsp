@@ -1,20 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: hezw
-  Date: 2016/3/17
-  Time: 15:53
+  Date: 2016/3/21
+  Time: 11:23
+  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>修改公告</title>
-    <meta charset="utf-8">
+    <title>删除公告</title>
 </head>
 <body id="loginBody">
 <%@include file="../common/headbar.jsp" %>
 <div id="noticePanel">
     <div class="panel panel-default">
-        <div class="panel-heading">修改班级公告&nbsp;&nbsp;<h4 style="display: inline;"><span class="label label-warning">点击需要修改的内容即可修改公告</span>
+        <div class="panel-heading">删除班级公告&nbsp;&nbsp;<h4 style="display: inline;"><span class="label label-danger">鼠标悬停点击删除按钮即可删除公告</span>
         </h4></div>
         <ul class="list-group">
         </ul>
@@ -38,11 +38,11 @@
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    修改结果
+                    删除结果
                 </h4>
             </div>
             <div class="modal-body">
-                正在修改······
+                正在删除······
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default"
@@ -78,13 +78,53 @@
                             result[i].pubtime +
                             '</div><br><br><div style="text-align:right" name="authorInput">—— ' +
                             result[i].author +
-                            '</div></li>');
+                            '</div><div class="deleteShadow" style="display: none;">' +
+                            '<button type="button" class="btn btn-danger">删除'
+                            + '</button></div></li>'
+                    );
                 }
             }
         });
 
-        //修改公告页面实现点击可重复编辑,并且更新到数据库中
-        $("ul.list-group").children("li").children().click(modifyNoticeFun);
+        //鼠标悬停出现删除按钮
+        $("ul.list-group").children("li").hover(function () {
+            $(this).find(".deleteShadow").show();
+            $(this).find(".deleteShadow").stop().animate({height: "100%", width: "100%"}, 400);
+            $(this).find(".deleteShadow button").stop().animate({width: "100px", marginTop: "20px"}, 400);
+        }, function () {
+            $(this).find(".deleteShadow").stop().animate({height: "0px", width: "0px"}, 400);
+            $(this).find(".deleteShadow").hide();
+        });
+
+        //删除按钮事件
+        $("ul.list-group").children("li").find("button").click(function () {
+            var id = $(this).parent().parent().find("input").val();
+            var deleteNode = $(this).parent().parent();
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "/onlineTest/deleteNotice.action",
+                data: JSON.stringify({'id': id}),
+                success: function (result) {
+                    if (result == "success") {
+                        $('#resultModel').modal('show');
+                        $("div.modal-body").html("删除成功");
+                        $("#model-button").click(function () {
+                            $('#resultModel').modal('hide')
+                        });
+                        deleteNode.remove();
+                    }
+                    else {
+                        $('#resultModel').modal('show');
+                        $("div.modal-body").html("删除失败");
+                        $("#model-button").click(function () {
+                            $('#resultModel').modal('hide')
+                        });
+                    }
+                }
+            });
+
+        });
 
         //返回按钮
         $("#backButton").click(function () {
