@@ -32,6 +32,15 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
+    public void addNoticeNum(int classno) throws Exception {
+        try {
+            noticeMapper.addNoticeNum(classno);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void updateNotice(NoticePo noticePo) throws Exception {
         try {
             noticeMapper.updateNotice(noticePo);

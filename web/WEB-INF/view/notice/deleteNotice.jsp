@@ -89,10 +89,10 @@
         //鼠标悬停出现删除按钮
         $("ul.list-group").children("li").hover(function () {
             $(this).find(".deleteShadow").show();
-            $(this).find(".deleteShadow").stop().animate({height: "100%", width: "100%"}, 400);
-            $(this).find(".deleteShadow button").stop().animate({width: "100px", marginTop: "20px"}, 400);
+            $(this).find(".deleteShadow").stop().animate({width: "100%"}, 400);
+            $(this).find(".deleteShadow button").stop().animate({width: "100px", marginTop: "20px"},1);
         }, function () {
-            $(this).find(".deleteShadow").stop().animate({height: "0px", width: "0px"}, 400);
+            $(this).find(".deleteShadow").stop().animate({width: "0px"}, 400);
             $(this).find(".deleteShadow").hide();
         });
 

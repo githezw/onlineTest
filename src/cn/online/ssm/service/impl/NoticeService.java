@@ -13,6 +13,9 @@ public interface NoticeService {
     //添加公告
     void addNotice(NoticePo noticePo) throws Exception;
 
+    //添加学生未读公告数量
+    void addNoticeNum(int classno) throws Exception;
+
     //更新公告
     void updateNotice(NoticePo noticePo) throws Exception;
 

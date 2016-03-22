@@ -21,6 +21,10 @@
         INSERT INTO classnotice(id,classno,notice,author,pubtime) VALUE (NULL,#{classno},#{notice},#{author},#{pubtime})
     </insert>
 
+    <update id="addNoticeNum" parameterType="int">
+        UPDATE  studentinfo SET noticenum = noticenum + 1 WHERE classno=#{classno}
+    </update>
+
     <update id="updateNotice" parameterType="cn.online.ssm.po.NoticePo">
         UPDATE classnotice
         SET notice = #{notice},

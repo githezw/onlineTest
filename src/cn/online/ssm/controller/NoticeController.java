@@ -77,6 +77,24 @@ public class NoticeController {
     }
 
     /*
+    学生未读公告数量+1
+     */
+    @RequestMapping("/addNoticeNum")
+    public
+    @ResponseBody
+    String addNoticeNum(@RequestBody NoticePo noticePo) throws Exception {
+        String flag;
+        int classno = noticePo.getClassno();
+        try {
+            noticeServiceImpl.addNoticeNum(classno);
+            flag = "success";
+        } catch (Exception e) {
+            flag = "failure";
+        }
+        return flag;
+    }
+
+    /*
     修改公告页面
      */
     @RequestMapping("/modifyNoticePage")
