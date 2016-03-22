@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-public class TestController {
+public class ExamController {
 
     @Autowired
     private TestServiceImpl testServiceImpl;
+
+    //添加考试页面
+    @RequestMapping("/addExamPage")
+    public String addExamPage() throws Exception{
+           return "exam/addExam";
+    }
 
     @RequestMapping("/addTestTable")
     public String addTestTable(TestCategoryPo testCategoryPo) throws Exception{

@@ -60,7 +60,7 @@
         <%--<span class="badge self-badge pull-right">new</span>--%>
     </div>
     <div id="asp" class="collapse examContent examContent-s3">
-        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+
     </div>
 </div>
 <div id="footer">
