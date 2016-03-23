@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int getClassno(Map<String,String> map) throws Exception {
+    public int getClassno(Map<String, String> map) throws Exception {
         int classno = 0;
         try {
             classno = userMapper.getClassno(map);
@@ -51,6 +51,17 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
         return classno;
+    }
+
+    @Override
+    public String getSubject(String realname) throws Exception {
+        String subject = null;
+        try {
+            subject = userMapper.getSubject(realname);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return subject;
     }
 
     @Override

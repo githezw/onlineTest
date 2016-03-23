@@ -45,15 +45,19 @@ public class UserController {
     public String login(String realname, String passwdTemp, String role, HttpSession session) throws Exception {
         boolean flag = userServiceImpl.userLogin(realname, passwdTemp, role);
         if (flag) {
-            String tablename=role+"info";
-            Map<String,String> map = new HashMap<String,String>();
-            map.put("tablename",tablename);
-            map.put("realname",realname);
+            String tablename = role + "info";
+            if ("teacher".equals(role)) {
+                String subject = userServiceImpl.getSubject(realname);
+                session.setAttribute("subject", subject);
+            }
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("tablename", tablename);
+            map.put("realname", realname);
             int classno = userServiceImpl.getClassno(map);
             session.setAttribute("realname", realname);
             session.setAttribute("role", role);
-            if(classno!=0){
-                session.setAttribute("classno",classno);
+            if (classno != 0) {
+                session.setAttribute("classno", classno);
             }
             return "redirect:/mainPage.action";
         } else {
@@ -83,8 +87,10 @@ public class UserController {
     /*
     通过传递json数据修改密码
      */
-    @RequestMapping(value = "/changePasswd",method = RequestMethod.POST)
-    public @ResponseBody String changePasswd(@RequestBody ModifyPwdPo modifyPwdPo) throws Exception {
+    @RequestMapping(value = "/changePasswd", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    String changePasswd(@RequestBody ModifyPwdPo modifyPwdPo) throws Exception {
         Boolean flag;
         boolean validateFlag;
         String tablename = modifyPwdPo.getRole() + "info";
@@ -111,10 +117,10 @@ public class UserController {
      */
     @RequestMapping("/getNoticeNum")
     @ResponseBody
-    public int getNoticeNum(@RequestBody StudentPo studentPo) throws Exception{
+    public int getNoticeNum(@RequestBody StudentPo studentPo) throws Exception {
         String realname = studentPo.getRealname();
         int noticeNum = 0;
-        noticeNum=userServiceImpl.getNoticeNum(realname);
+        noticeNum = userServiceImpl.getNoticeNum(realname);
         return noticeNum;
     }
 
@@ -122,9 +128,10 @@ public class UserController {
     获取班级通知列表信息
      */
     @RequestMapping("/getNotice")
-    public @ResponseBody
-    List<NoticePo> getNotice(@RequestBody StudentPo studentPo) throws Exception{
-        List<NoticePo> noticeList =  new ArrayList<NoticePo>();
+    public
+    @ResponseBody
+    List<NoticePo> getNotice(@RequestBody StudentPo studentPo) throws Exception {
+        List<NoticePo> noticeList = new ArrayList<NoticePo>();
         int classno = studentPo.getClassno();
         noticeList = userServiceImpl.getNotice(classno);
         return noticeList;

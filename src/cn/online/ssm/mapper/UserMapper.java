@@ -15,6 +15,8 @@ public interface UserMapper {
 
     int getClassno(Map<String,String> map) throws Exception;
 
+    String getSubject(String realname) throws Exception;
+
     void changePasswd(Map<String,String> map) throws Exception;
 
     List<NoticePo> getNotice(Integer classno) throws Exception;

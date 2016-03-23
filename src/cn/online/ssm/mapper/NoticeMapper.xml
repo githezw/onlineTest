@@ -8,15 +8,6 @@
       UPDATE studentinfo set noticenum = 0 where realname=#{realname}
     </update>
 
-    <update id="addTable" parameterType="String">
-        CREATE TABLE IF NOT EXISTS ${tableName} (
-        ${id} INT AUTO_INCREMENT PRIMARY KEY,
-        ${testName} VARCHAR(10),
-        ${testTime} DATE ,
-        ${author} VARCHAR(11)
-        )
-    </update>
-
     <insert id="addNotice" parameterType="cn.online.ssm.po.NoticePo">
         INSERT INTO classnotice(id,classno,notice,author,pubtime) VALUE (NULL,#{classno},#{notice},#{author},#{pubtime})
     </insert>

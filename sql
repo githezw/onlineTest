@@ -27,3 +27,13 @@ CREATE TABLE classnotice(
 	author VARCHAR(20),
 	pubtime date
 );
+
+#创建考试项目表
+CREATE TABLE IF NOT EXISTS exams (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+		examname VARCHAR(20),
+        subject VARCHAR(20),
+        examtime DATE ,
+        author VARCHAR(11),
+        classno INT
+        );

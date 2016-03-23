@@ -15,6 +15,10 @@
         SELECT classno FROM ${tablename} WHERE realname=#{realname}
     </select>
 
+    <select id="getSubject" parameterType="String" resultType="String">
+        SELECT subject FROM teacherinfo WHERE realname=#{realname}
+    </select>
+
     <update id="changePasswd" parameterType="Map">
         UPDATE ${tablename} SET passwd = ${passwd} where realname = ${realname}
     </update>

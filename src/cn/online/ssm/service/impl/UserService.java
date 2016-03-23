@@ -17,6 +17,9 @@ public interface UserService {
     //获取学生/教师班级号
     int getClassno(Map<String,String> map) throws Exception;
 
+    //获取教师科目
+    String getSubject(String realname) throws Exception;
+
     //修改密码
     void changePasswd(Map<String, String> map) throws Exception;
 

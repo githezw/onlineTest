@@ -12,73 +12,107 @@
 </head>
 <%@include file="../common/headbar.jsp" %>
 <body id="loginBody">
-<div id="mainNavLeft" class="panel-group" style="float:left;width: 400px;">
-    <div style="text-align: center;margin-top: 30px">
-        <button id="addExamBtn" type="button" class="btn btn-danger" style="width:250px">新增考试</button>
-    </div>
-    <div class="addExamForm">
+<span id= "slideleft" class="label label-default" style="position: absolute;top: 50%;left: 390px;"><br>收<br><br>起<br><br></span>
 
-    </div>
-    <div class="ExamList">
-        <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
-             href="#c1"><span
-                class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;C考试列表&nbsp;<span class="caret"></span>
-            <%--<span class="badge self-badge pull-right">new</span>--%>
+<div id="mainNavLeft" class="panel-group" style="float:left;width: 400px;">
+    <div style="text-align: center; margin-top: 30px;">
+        <button type="button" class="btn btn-danger" style="width:250px" data-toggle="collapse"
+                data-parent="#mainNavLeft"
+                href="#addForm">新增考试
+        </button>
+        <div id="addForm" class="collapse examContent">
+            <div class="form-horizontal" role="form" id="addExamForm">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="color: darkgrey;">考试名称</span>
+                        <input type="text" class="form-control" id="examname"
+                               placeholder="在此输入考试名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="color: darkgrey;">考试日期</span>
+                        <input type="text" class="form-control" id="examtime"
+                               placeholder="格式:2016-3-23">
+                    </div>
+                </div>
+                <input type="hidden" id="subject" value="${subject}">
+                <input type="hidden" id="author" value="${realname}">
+            </div>
+            <div class="col-sm-12" style="margin-bottom: 30px">
+                <div class="col-sm-6">
+                    <button id="addExamBtn" class="btn btn-success" data-toggle="modal"
+                            data-target="#resultModel">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                </div>
+                <div class="col-sm-6">
+                    <button id="addExamReset" class="btn btn-warning">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                </div>
+            </div>
         </div>
-        <div id="c1" class="collapse examContent examContent-s1">
+    </div>
+
+    <div class="ExamList" style="text-align: center;margin-top: 20px;">
+        <button type="button" class="btn btn-info" style="width:250px" data-toggle="collapse" data-parent="#mainNavLeft"
+                href="#c1">展开全部考试项
+        </button>
+        <div id="c1" class="collapse examContent" style="margin-top: 10px;">
             Nihil anim keffiyeh helvetica, craft beer labore wes anderson
         </div>
     </div>
 </div>
-<form class="form-horizontal" role="form" id="modifyForm" style="height: 250px;margin-left: 300px;float:left">
+
+<div class="form-horizontal" role="form" id="modifyForm" style="height: 250px;margin-left: 300px;float:left">
     <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon input-addon-mine"><div style="color: darkgrey;">考试题目</div></span>
-            <textarea type="text" class="form-control" rows="3" id="examTitle" name="examTitle" style="width:300px"
+            <span class="input-group-addon input-addon-mine" style="color: darkgrey;">考试题目</span>
+            <textarea type="text" class="form-control" rows="3" id="examTitle" name="examTitle" style="width:300px;"
                       placeholder="在此输入考试题目"></textarea>
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon input-addon-mine"><div style="color: darkgrey;">选项1</div></span>
+            <span class="input-group-addon input-addon-mine" style="color: darkgrey;">选项1</span>
             <input type="text" class="form-control" id="select1" name="select1" style="width:300px"
                    placeholder="在此输入选项1">
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon input-addon-mine"><div style="color: darkgrey;">选项2</div></span>
+            <span class="input-group-addon input-addon-mine" style="color: darkgrey;">选项2</span>
             <input type="text" class="form-control" id="select2" name="select2" style="width:300px"
                    placeholder="在此输入选项2">
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon input-addon-mine"><div style="color: darkgrey;">选项3</div></span>
+            <span class="input-group-addon input-addon-mine" style="color: darkgrey;">选项3</span>
             <input type="text" class="form-control" id="select3" name="select3" style="width:300px"
                    placeholder="在此输入选项3">
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
-            <span class="input-group-addon input-addon-mine"><div style="color: darkgrey;">选项4</div></span>
+            <span class="input-group-addon input-addon-mine" style="color: darkgrey;">选项4</span>
             <input type="text" class="form-control" id="select4" name="select4" style="width:300px"
                    placeholder="在此输入选项4">
         </div>
     </div>
-</form>
 
-<div class="col-sm-12" style="width:500px;margin-left: 290px;margin-top: 50px">
-    <div class="col-sm-6">
-        <button id="submit" class="btn btn-success" data-toggle="modal"
-                data-target="#resultModel">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-    </div>
-    <div class="col-sm-6">
-        <button class="btn btn-warning" id="reset">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <div class="col-sm-12" style="width:350px;margin-top: 50px">
+        <div class="col-sm-6">
+            <button id="submit" class="btn btn-success" data-toggle="modal"
+                    data-target="#resultModel">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-warning" id="reset">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+        </div>
     </div>
 </div>
+
 <!--修改结果弹出框-->
 <div class="modal fade" id="resultModel" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -90,7 +124,7 @@
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    添加公告
+                    添加考试项
                 </h4>
             </div>
             <div class="modal-body">
@@ -107,5 +141,72 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<script>
+    $(document).ready(function () {
+        $("#addExamBtn").click(function () {
+            var examname = $("#examname").val();
+            var examtime = $("#examtime").val();
+            var subject = $("#subject").val();
+            var author = $("#author").val();
+            var classno = $("#classno").val();
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "/onlineTest/addExamItem.action",
+                data: JSON.stringify({
+                    'examname': examname,
+                    'subject': subject,
+                    'examtime': examtime,
+                    'author': author,
+                    'classno':classno
+                }),
+                success: function (result) {
+                    if (result == "success") {
+                        $("div.modal-body").html("添加成功");
+                        resetFun();
+                        $("#model-button").click(function () {
+                            /*window.location.href = "/onlineTest/mainPage.action";*/
+                            $('#resultModel').modal('hide');
+                            $("div.modal-body").html("正在添加······");
+                        });
+                    }
+                },
+                error: function (result) {
+                    if (result == "success") {
+                        $("div.modal-body").html("添加失败");
+                        resetFun();
+                        $("#model-button").click(function () {
+                            /*window.location.href = "/onlineTest/mainPage.action";*/
+                            $('#resultModel').modal('hide');
+                            $("div.modal-body").html("正在添加······");
+                        });
+                    }
+                }
+            });
+        });
+
+        $("#addExamReset").click(resetFun);
+
+        var flag = true;
+        $("#slideleft").click(function(){
+            if(flag==true) {
+                $("#mainNavLeft").stop().animate({width: "30px"}, 400);
+                $("#modifyForm").stop().animate({marginLeft:"500px"});
+                $("#slideleft").stop().animate({left: "20px"}, 400);
+                flag=false;
+            }else{
+                $("#mainNavLeft").stop().animate({width: "400px"}, 400);
+                $("#modifyForm").stop().animate({marginLeft:"300px"});
+                $("#slideleft").stop().animate({left: "390px"}, 400);
+                flag=true;
+            }
+        });
+
+        function resetFun(){
+            $("#examname").val("");
+            $("#examtime").val("");
+        }
+    });
+</script>
 </body>
 </html>

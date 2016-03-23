@@ -252,6 +252,19 @@ body{
 
 /*考试项目列表*/
 /*-------------------------------------------------------------*/
+#addForm{
+    margin-top: 10px;
+}
+
+#addExamForm{
+    position: relative;
+    width: 250px;
+    height: 50px;
+    align-content: center;
+    margin-bottom: 40px;
+    margin-left: 15%;
+}
+
 .ExamList{
     background-color: #2e3e4c;
     height: 100%;
@@ -263,9 +276,6 @@ body{
 
 }
 
-.addExamForm{
-
-}
 
 
 /*-------------------------------------------------------------*/
