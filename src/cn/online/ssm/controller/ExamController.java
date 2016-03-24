@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by hezw on 2016/3/14.
  */
@@ -37,5 +41,19 @@ public class ExamController {
             flag = "failure";
         }
         return flag;
+    }
+
+    //增加考试项目
+    @RequestMapping("/getAllExamItem")
+    public
+    @ResponseBody
+    List<Map<String, String>> getAllExamItem(@RequestBody Map<String, String> map) throws Exception {
+        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        try {
+            list = testServiceImpl.getAllExamItem(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

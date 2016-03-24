@@ -4,6 +4,10 @@ import cn.online.ssm.mapper.TestMapper;
 import cn.online.ssm.po.ExamItemPo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by hezw on 2016/3/14.
  */
@@ -20,5 +24,21 @@ public class TestServiceImpl implements TestService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /*
+    获取所有考试项目
+    @param classno
+    @param subject
+     */
+    @Override
+    public List<Map<String, String>> getAllExamItem(Map<String, String> map) throws Exception {
+        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        try {
+            list = testMapper.getAllExamItem(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

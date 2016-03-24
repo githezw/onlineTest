@@ -12,7 +12,7 @@
 </head>
 <%@include file="../common/headbar.jsp" %>
 <body id="loginBody">
-<span id= "slideleft" class="label label-default" style="position: absolute;top: 50%;left: 390px;"><br>收<br><br>起<br><br></span>
+<span id="slideleft" class="label label-default" style="position: absolute;top: 50%;left: 390px;"><br>收<br><br>起<br><br></span>
 
 <div id="mainNavLeft" class="panel-group" style="float:left;width: 400px;">
     <div style="text-align: center; margin-top: 30px;">
@@ -55,11 +55,9 @@
 
     <div class="ExamList" style="text-align: center;margin-top: 20px;">
         <button type="button" class="btn btn-info" style="width:250px" data-toggle="collapse" data-parent="#mainNavLeft"
-                href="#c1">展开全部考试项
+                href="#ExamItemList" id="getAllExamBtn">展开全部考试项
         </button>
-        <div id="c1" class="collapse examContent" style="margin-top: 10px;">
-            Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-        </div>
+        <div id="ExamItemList" class="collapse examContent" style="margin-top: 10px;"></div>
     </div>
 </div>
 
@@ -143,6 +141,13 @@
 </div>
 <script>
     $(document).ready(function () {
+
+        //是否加载所有考试项标志
+        var examListFlag = true;
+        //滑动标志
+        var slideFlag = true;
+
+        //添加考试项按钮
         $("#addExamBtn").click(function () {
             var examname = $("#examname").val();
             var examtime = $("#examtime").val();
@@ -158,7 +163,7 @@
                     'subject': subject,
                     'examtime': examtime,
                     'author': author,
-                    'classno':classno
+                    'classno': classno
                 }),
                 success: function (result) {
                     if (result == "success") {
@@ -185,27 +190,66 @@
             });
         });
 
-        $("#addExamReset").click(resetFun);
-
-        var flag = true;
-        $("#slideleft").click(function(){
-            if(flag==true) {
-                $("#mainNavLeft").stop().animate({width: "30px"}, 400);
-                $("#modifyForm").stop().animate({marginLeft:"500px"});
-                $("#slideleft").stop().animate({left: "20px"}, 400);
-                flag=false;
-            }else{
-                $("#mainNavLeft").stop().animate({width: "400px"}, 400);
-                $("#modifyForm").stop().animate({marginLeft:"300px"});
-                $("#slideleft").stop().animate({left: "390px"}, 400);
-                flag=true;
+        //展开全部考试项按钮
+        $("#getAllExamBtn").click(function () {
+            if (examListFlag) {
+                var subject = $("#subject").val();
+                var classno = $("#classno").val();
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json",
+                    url: "/onlineTest/getAllExamItem.action",
+                    data: JSON.stringify({'classno': classno, 'subject': subject}),
+                    success: function (result) {
+                        for (var i = 0; i < result.length; i++) {
+                            var id = result[i]["id"];
+                            var examname = result[i]["examname"];
+                            var examItemNode = $("<div>");
+                            var examIdNode = $("<input>");
+                            examItemNode.attr("class", "ExamItem");
+                            examIdNode.attr("type", "hidden");
+                            examIdNode.val(id);
+                            examItemNode.append(examIdNode);
+                            examItemNode.text(examname);
+                            $("#ExamItemList").append(examItemNode);
+                            examListFlag=false;
+                        }
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
             }
         });
 
-        function resetFun(){
+        $("#addExamReset").click(resetFun);
+
+        $("#slideleft").click(function () {
+            if (slideFlag == true) {
+                $('#addForm').collapse('hide');
+                $('#ExamItemList').collapse('hide');
+                $("#mainNavLeft").stop().animate({width: "30px"}, 400);
+                $("#modifyForm").stop().animate({marginLeft: "500px"});
+                $("#slideleft").stop().animate({left: "20px"}, 400);
+                slideFlag = false;
+            } else {
+                $("#mainNavLeft").stop().animate({width: "400px"}, 400);
+                $("#modifyForm").stop().animate({marginLeft: "300px"});
+                $("#slideleft").stop().animate({left: "390px"}, 400);
+                slideFlag = true;
+            }
+        });
+
+        function resetFun() {
             $("#examname").val("");
             $("#examtime").val("");
         }
+
+        function Examclick
+        $("div.ExamItem").click(function () {
+            $(this).css("background-color", "#d81159");
+            $(this).siblings().css("background-color", "#2e3e4c");
+        })
     });
 </script>
 </body>

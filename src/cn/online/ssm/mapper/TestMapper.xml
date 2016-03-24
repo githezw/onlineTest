@@ -4,16 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.online.ssm.mapper.TestMapper">
     <insert id="addExamItem" parameterType="cn.online.ssm.po.ExamItemPo">
-        INSERT INTO exams VALUE(NULL,#{examname},#{subject},#{examtime},#{author},#{classno});
+        <![CDATA[ INSERT INTO exams VALUE(NULL,#{examname},#{subject},#{examtime},#{author},#{classno})]]>
     </insert>
 
+    <select id="getAllExamItem" parameterType="Map" resultType="Map">
+        <![CDATA[ SELECT id,examname FROM exams WHERE classno=#{classno}&&subject=#{subject}]]>
+    </select>
+
     <update id="temp"  parameterType="cn.online.ssm.po.ExamItemPo">
-        CREATE TABLE IF NOT EXISTS ${tableName} (
+        <![CDATA[CREATE TABLE IF NOT EXISTS ${tableName} (
         id INT AUTO_INCREMENT PRIMARY KEY,
         ${subject} VARCHAR(20),
         ${testTime} DATE ,
         ${author} VARCHAR(11)
-        )
+        )]]>
     </update>
 
 </mapper>
