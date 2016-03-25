@@ -151,7 +151,7 @@
         $("#addExamBtn").click(function () {
             var examname = $("#examname").val();
             var examtime = $("#examtime").val();
-            var subject = $("#subject").val();
+            var subject = $('#subject').val();
             var author = $("#author").val();
             var classno = $("#classno").val();
             $.ajax({
@@ -169,8 +169,8 @@
                     if (result == "success") {
                         $("div.modal-body").html("添加成功");
                         resetFun();
+                        updateExamList();
                         $("#model-button").click(function () {
-                            /*window.location.href = "/onlineTest/mainPage.action";*/
                             $('#resultModel').modal('hide');
                             $("div.modal-body").html("正在添加······");
                         });
@@ -211,9 +211,10 @@
                             examIdNode.val(id);
                             examItemNode.append(examIdNode);
                             examItemNode.text(examname);
+                            examItemNode.bind("click",examClickColor);
                             $("#ExamItemList").append(examItemNode);
-                            examListFlag=false;
                         }
+                        examListFlag=false;
                     },
                     error: function () {
                         alert("error");
@@ -221,6 +222,39 @@
                 });
             }
         });
+
+        //刷新考试项列表
+        function updateExamList(){
+            $("#ExamItemList").html("");
+            var subject = $("#subject").val();
+            var classno = $("#classno").val();
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "/onlineTest/getAllExamItem.action",
+                data: JSON.stringify({'classno': classno, 'subject': subject}),
+                success: function (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        var id = result[i]["id"];
+                        var examname = result[i]["examname"];
+                        var examItemNode = $("<div>");
+                        var examIdNode = $("<input>");
+                        examItemNode.attr("class", "ExamItem");
+                        examIdNode.attr("type", "hidden");
+                        examIdNode.val(id);
+                        examItemNode.append(examIdNode);
+                        examItemNode.text(examname);
+                        examItemNode.bind("click",examClickColor);
+                        $("#ExamItemList").append(examItemNode);
+                    }
+                    examListFlag=false;
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+
+        }
 
         $("#addExamReset").click(resetFun);
 
@@ -245,11 +279,10 @@
             $("#examtime").val("");
         }
 
-        function Examclick
-        $("div.ExamItem").click(function () {
+        function examClickColor() {
             $(this).css("background-color", "#d81159");
             $(this).siblings().css("background-color", "#2e3e4c");
-        })
+        }
     });
 </script>
 </body>
