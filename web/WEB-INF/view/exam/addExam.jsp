@@ -265,11 +265,13 @@
                 $("#mainNavLeft").stop().animate({width: "30px"}, 400);
                 $("#modifyForm").stop().animate({marginLeft: "500px"});
                 $("#slideleft").stop().animate({left: "20px"}, 400);
+                $(this).html("<br>展<br><br>开<br><br>");
                 slideFlag = false;
             } else {
                 $("#mainNavLeft").stop().animate({width: "400px"}, 400);
                 $("#modifyForm").stop().animate({marginLeft: "300px"});
                 $("#slideleft").stop().animate({left: "390px"}, 400);
+                $(this).html("<br>收<br><br>起<br><br>");
                 slideFlag = true;
             }
         });
