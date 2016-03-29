@@ -15,8 +15,11 @@ public interface TestMapper {
 
     /*
     获取所有考试项目
-    @param classno
-    @param subject
      */
     List<Map<String,String>> getAllExamItem(Map<String,String> map) throws Exception;
+
+    /*
+    新建试题表
+     */
+    void createExamTable(String tablename) throws Exception;
 }

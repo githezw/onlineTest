@@ -41,4 +41,13 @@ public class TestServiceImpl implements TestService {
         }
         return list;
     }
+
+    @Override
+    public void createExamTable(String tablename) throws Exception {
+        try {
+            testMapper.createExamTable(tablename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

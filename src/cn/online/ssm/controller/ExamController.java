@@ -56,4 +56,19 @@ public class ExamController {
         }
         return list;
     }
+
+    //增加考试项目表
+    @RequestMapping("/createExamTable")
+    public void createExamTable(@RequestBody Map<String, String> map) throws Exception {
+        String tablename = "";
+        tablename += (String)map.get("id");
+        tablename = tablename + "_" + (String)map.get("examname");
+        System.out.println(tablename);
+        try {
+            testServiceImpl.createExamTable(tablename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

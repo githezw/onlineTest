@@ -4,19 +4,27 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.online.ssm.mapper.TestMapper">
     <insert id="addExamItem" parameterType="cn.online.ssm.po.ExamItemPo">
-        <![CDATA[ INSERT INTO exams VALUE(NULL,#{examname},#{subject},#{examtime},#{author},#{classno})]]>
+        <![CDATA[
+         INSERT INTO exams VALUE(NULL,#{examname},#{subject},#{examtime},#{author},#{classno})
+        ]]>
     </insert>
 
     <select id="getAllExamItem" parameterType="Map" resultType="Map">
-        <![CDATA[ SELECT id,examname FROM exams WHERE classno=#{classno}&&subject=#{subject}]]>
+        <![CDATA[
+         SELECT id,examname FROM exams WHERE classno=#{classno}&&subject=#{subject}
+        ]]>
     </select>
 
-    <update id="temp"  parameterType="cn.online.ssm.po.ExamItemPo">
-        <![CDATA[CREATE TABLE IF NOT EXISTS ${tableName} (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        ${subject} VARCHAR(20),
-        ${testTime} DATE ,
-        ${author} VARCHAR(11)
+    <update id="createExamTable" parameterType="String">
+        <![CDATA[
+        CREATE TABLE IF NOT EXISTS ${value}(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(100),
+            opt1 VARCHAR(20),
+			opt2 VARCHAR(20),
+			opt3 VARCHAR(20),
+			opt4 VARCHAR(20),
+			opt5 VARCHAR(5)
         )]]>
     </update>
 

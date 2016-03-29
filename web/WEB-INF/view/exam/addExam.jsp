@@ -167,12 +167,23 @@
                 }),
                 success: function (result) {
                     if (result == "success") {
-                        $("div.modal-body").html("添加成功");
-                        resetFun();
                         updateExamList();
-                        $("#model-button").click(function () {
-                            $('#resultModel').modal('hide');
-                            $("div.modal-body").html("正在添加······");
+                        var newExamItem  = $("#ExamItemList div:last-child");
+                        var id = newExamItem.find("input").val();
+                        var examname = newExamItem.text();
+                        $.ajax({
+                            type: "post",
+                            contentType: "application/json",
+                            url: "/onlineTest/createExamTable.action",
+                            data: JSON.stringify({'id':id,'examname':examname}),
+                            success: function () {
+                                $("div.modal-body").html("添加成功");
+                                resetFun();
+                                $("#model-button").click(function () {
+                                    $('#resultModel').modal('hide');
+                                    $("div.modal-body").html("正在添加······");
+                                });
+                            }
                         });
                     }
                 },
@@ -205,16 +216,16 @@
                             var id = result[i]["id"];
                             var examname = result[i]["examname"];
                             var examItemNode = $("<div>");
-                            var examIdNode = $("<input>");
                             examItemNode.attr("class", "ExamItem");
+                            examItemNode.text(examname);
+                            var examIdNode = $("<input />");
                             examIdNode.attr("type", "hidden");
                             examIdNode.val(id);
                             examItemNode.append(examIdNode);
-                            examItemNode.text(examname);
-                            examItemNode.bind("click",examClickColor);
+                            examItemNode.bind("click", examClickColor);
                             $("#ExamItemList").append(examItemNode);
                         }
-                        examListFlag=false;
+                        examListFlag = false;
                     },
                     error: function () {
                         alert("error");
@@ -224,13 +235,14 @@
         });
 
         //刷新考试项列表
-        function updateExamList(){
+        function updateExamList() {
             $("#ExamItemList").html("");
             var subject = $("#subject").val();
             var classno = $("#classno").val();
             $.ajax({
                 type: "post",
                 contentType: "application/json",
+                async:false,
                 url: "/onlineTest/getAllExamItem.action",
                 data: JSON.stringify({'classno': classno, 'subject': subject}),
                 success: function (result) {
@@ -238,16 +250,16 @@
                         var id = result[i]["id"];
                         var examname = result[i]["examname"];
                         var examItemNode = $("<div>");
-                        var examIdNode = $("<input>");
                         examItemNode.attr("class", "ExamItem");
+                        examItemNode.text(examname);
+                        var examIdNode = $("<input>");
                         examIdNode.attr("type", "hidden");
                         examIdNode.val(id);
                         examItemNode.append(examIdNode);
-                        examItemNode.text(examname);
-                        examItemNode.bind("click",examClickColor);
+                        examItemNode.bind("click", examClickColor);
                         $("#ExamItemList").append(examItemNode);
                     }
-                    examListFlag=false;
+                    examListFlag = false;
                 },
                 error: function () {
                     alert("error");
