@@ -28,4 +28,10 @@
         )]]>
     </update>
 
+    <insert id="addExamPaperItem" parameterType="Map">
+      <![CDATA[
+        INSERT INTO ${tablename} VALUES (NULL,#{title},#{opt1},#{opt2},#{opt3},#{opt4},#{opt5});
+        ]]>
+    </insert>
+
 </mapper>

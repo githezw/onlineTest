@@ -1,6 +1,7 @@
 package cn.online.ssm.controller;
 
 import cn.online.ssm.po.ExamItemPo;
+import cn.online.ssm.po.ExamPaperPo;
 import cn.online.ssm.service.impl.TestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +45,7 @@ public class ExamController {
         return flag;
     }
 
-    //增加考试项目
+    //获取全部考试项目
     @RequestMapping("/getAllExamItem")
     public
     @ResponseBody
@@ -61,14 +63,34 @@ public class ExamController {
     @RequestMapping("/createExamTable")
     public void createExamTable(@RequestBody Map<String, String> map) throws Exception {
         String tablename = "";
-        tablename += (String)map.get("id");
-        tablename = tablename + "_" + (String)map.get("examname");
+        tablename += (String) map.get("id");
+        tablename = tablename + "_" + (String) map.get("examname");
+        tablename = tablename + "_" + (String) map.get("subject");
         System.out.println(tablename);
         try {
             testServiceImpl.createExamTable(tablename);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //新增考题
+    @RequestMapping("/addExamPaperItem")
+    public
+    @ResponseBody
+    String addExamPaperItem(@RequestBody Map<String,String> map) throws Exception {
+        String flag;
+        Map<String,Object> examMap = new HashMap<String ,Object>();
+        String tablename = map.get("id")+"_"+map.get("examname")+"_"+map.get("subject");
+        map.put("tablename",tablename);
+        try {
+            testServiceImpl.addExamPaperItem(map);
+            flag="success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            flag="failure";
+        }
+        return flag;
     }
 
 }

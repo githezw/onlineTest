@@ -2,6 +2,7 @@ package cn.online.ssm.service.impl;
 
 import cn.online.ssm.mapper.TestMapper;
 import cn.online.ssm.po.ExamItemPo;
+import cn.online.ssm.po.ExamPaperPo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -46,6 +47,15 @@ public class TestServiceImpl implements TestService {
     public void createExamTable(String tablename) throws Exception {
         try {
             testMapper.createExamTable(tablename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void addExamPaperItem(Map<String,String> map) throws Exception {
+        try {
+            testMapper.addExamPaperItem(map);
         } catch (Exception e) {
             e.printStackTrace();
         }

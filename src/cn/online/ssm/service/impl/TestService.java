@@ -1,6 +1,7 @@
 package cn.online.ssm.service.impl;
 
 import cn.online.ssm.po.ExamItemPo;
+import cn.online.ssm.po.ExamPaperPo;
 
 import java.util.List;
 import java.util.Map;
@@ -20,8 +21,9 @@ public interface TestService {
      */
     List<Map<String,String>> getAllExamItem(Map<String,String> map) throws Exception;
 
-    /*
-    新建试题表
-     */
+    //新建试题表
     void createExamTable(String tablename) throws Exception;
+
+    //新增试题
+    void addExamPaperItem(Map<String,String> map) throws Exception;
 }
