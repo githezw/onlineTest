@@ -93,4 +93,26 @@ public class ExamController {
         return flag;
     }
 
+    //删除考试项页面
+    @RequestMapping("/deleteExamPage")
+    public String deleteExamPage() throws Exception{
+        return "exam/deleteExam";
+    }
+
+    //删除考试项
+    @RequestMapping("/deleteExamTable")
+    public @ResponseBody String deleteExamTable(@RequestBody Map<String,String> map) throws Exception{
+        String flag;
+        String tablename =  map.get("id")+"_"+map.get("examname")+"_"+map.get("subject");
+        try {
+            testServiceImpl.deleteExamItem(map.get("id"));
+            testServiceImpl.deleteExamTable(tablename);
+            flag="success";
+        } catch (Exception e) {
+            flag="failure";
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
 }

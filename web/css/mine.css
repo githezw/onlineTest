@@ -283,3 +283,14 @@ body{
 
 
 /*-------------------------------------------------------------*/
+
+/*考试面板样式*/
+#examPanel{
+    left:28%;
+    top: 100px;
+    width: 600px;
+    height: 60%;
+    margin-bottom: 10px;
+    position: relative;
+
+}

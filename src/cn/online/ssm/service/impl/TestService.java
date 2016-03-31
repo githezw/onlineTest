@@ -14,6 +14,9 @@ public interface TestService {
     //添加考试项目
     void addExamItem(ExamItemPo examItemPo) throws Exception;
 
+    //删除考试项目
+    void deleteExamItem(String id) throws Exception;
+
     /*
     获取所有考试项目
     @param classno
@@ -26,4 +29,8 @@ public interface TestService {
 
     //新增试题
     void addExamPaperItem(Map<String,String> map) throws Exception;
+
+    //删除考试项
+    void deleteExamTable(String tablename) throws Exception;
+
 }

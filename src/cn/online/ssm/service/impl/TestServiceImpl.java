@@ -27,6 +27,15 @@ public class TestServiceImpl implements TestService {
         }
     }
 
+    @Override
+    public void deleteExamItem(String id) throws Exception {
+        try {
+            testMapper.deleteExamItem(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /*
     获取所有考试项目
     @param classno
@@ -56,6 +65,15 @@ public class TestServiceImpl implements TestService {
     public void addExamPaperItem(Map<String,String> map) throws Exception {
         try {
             testMapper.addExamPaperItem(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteExamTable(String tablename) throws Exception {
+        try {
+            testMapper.deleteExamTable(tablename);
         } catch (Exception e) {
             e.printStackTrace();
         }

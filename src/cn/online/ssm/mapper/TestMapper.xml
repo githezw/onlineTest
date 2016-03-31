@@ -9,6 +9,10 @@
         ]]>
     </insert>
 
+    <delete id="deleteExamItem" parameterType="String">
+        DELETE FROM exams WHERE id=#{value}
+    </delete>
+
     <select id="getAllExamItem" parameterType="Map" resultType="Map">
         <![CDATA[
          SELECT id,examname FROM exams WHERE classno=#{classno}&&subject=#{subject}
@@ -33,5 +37,9 @@
         INSERT INTO ${tablename} VALUES (NULL,#{title},#{opt1},#{opt2},#{opt3},#{opt4},#{opt5});
         ]]>
     </insert>
+
+    <update id="deleteExamTable" parameterType="String">
+        DROP TABLE IF EXISTS ${value}
+    </update>
 
 </mapper>
