@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,6 +114,12 @@ public class ExamController {
             e.printStackTrace();
         }
         return flag;
+    }
+
+    //查看全部考试项
+    @RequestMapping("/checkExam")
+    public String checkExam() throws Exception {
+        return "exam/allExam";
     }
 
 }

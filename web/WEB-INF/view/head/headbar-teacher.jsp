@@ -28,7 +28,7 @@
             <li class="dropdown-submenu">
                 <a tabindex="-1" href="javascript:;"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;考试选项</a>
                 <ul class="dropdown-menu avaterMenu">
-                    <li><a tabindex="-1" href="#"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;&nbsp;查看以往考试</a></li>
+                    <li><a tabindex="-1" href="/onlineTest/checkExam.action"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;&nbsp;查看以往考试</a></li>
                     <li><a tabindex="-1" href="/onlineTest/addExamPage.action"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;新增考试</a></li>
                     <li><a tabindex="-1" href="javascript:;"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;修改考题</a></li>
                     <li><a tabindex="-1" href="/onlineTest/deleteExamPage.action"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;删除考试</a></li>
