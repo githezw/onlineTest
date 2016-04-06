@@ -10,12 +10,12 @@
     </insert>
 
     <delete id="deleteExamItem" parameterType="String">
-        DELETE FROM exams WHERE id=#{value}
+        <![CDATA[DELETE FROM exams WHERE id=#{value}]]>
     </delete>
 
     <select id="getAllExamItem" parameterType="Map" resultType="Map">
         <![CDATA[
-         SELECT id,examname FROM exams WHERE classno=#{classno}&&subject=#{subject}
+         SELECT id,examname,examtime FROM exams WHERE classno=#{classno}&&subject=#{subject}
         ]]>
     </select>
 

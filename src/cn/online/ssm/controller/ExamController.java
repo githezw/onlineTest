@@ -122,4 +122,10 @@ public class ExamController {
         return "exam/allExam";
     }
 
+    //修改考题页面
+    @RequestMapping("/modifyExamPage")
+    public String modifyExamPage() throws Exception{
+        return "exam/modifyExam";
+    }
+
 }

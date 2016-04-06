@@ -127,7 +127,7 @@
 
         //返回按钮
         $("#backButton").click(function () {
-            window.location.href = "";
+            window.location.href = "/onlineTest/checkExam.action";
         });
     });
 </script>
