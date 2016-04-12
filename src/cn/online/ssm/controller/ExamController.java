@@ -128,4 +128,17 @@ public class ExamController {
         return "exam/modifyExam";
     }
 
+    //获取一张试卷所有考题
+    @RequestMapping("/getAllPaperItem")
+    public @ResponseBody List<ExamPaperPo> getAllPaperItem(@RequestBody Map<String,String> map) throws Exception{
+        String tablename =  map.get("id")+"_"+map.get("examname")+"_"+map.get("subject");
+        List<ExamPaperPo> list = new ArrayList<>();
+        try {
+            list = testServiceImpl.getAllPaperItem(tablename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 }

@@ -43,7 +43,7 @@ public class TestServiceImpl implements TestService {
      */
     @Override
     public List<Map<String, String>> getAllExamItem(Map<String, String> map) throws Exception {
-        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        List<Map<String, String>> list = new ArrayList<>();
         try {
             list = testMapper.getAllExamItem(map);
         } catch (Exception e) {
@@ -62,7 +62,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public void addExamPaperItem(Map<String,String> map) throws Exception {
+    public void addExamPaperItem(Map<String, String> map) throws Exception {
         try {
             testMapper.addExamPaperItem(map);
         } catch (Exception e) {
@@ -77,5 +77,16 @@ public class TestServiceImpl implements TestService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<ExamPaperPo> getAllPaperItem(String tablename) throws Exception {
+        List<ExamPaperPo> list = new ArrayList<>();
+        try {
+            list = testMapper.getAllPaperItem(tablename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

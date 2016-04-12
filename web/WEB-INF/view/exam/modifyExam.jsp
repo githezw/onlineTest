@@ -20,8 +20,8 @@
                 href="#ExamItemList" id="getAllExamBtn">展开全部考试项
         </button>
         <div id="ExamItemList" class="collapse examContent" style="margin-top: 10px;"></div>
-        <input type="hidden" id="examSelected">
-        <input type="hidden" id="examSelectedId">
+<%--        <input type="hidden" id="examSelected">
+        <input type="hidden" id="examSelectedId">--%>
     </div>
 </div>
 
@@ -168,8 +168,11 @@
         function examClickColor() {
             $(this).css("background-color", "#d81159");
             $(this).siblings().css("background-color", "#2e3e4c");
-            $("#examSelectedId").val($(this).find("input").val());
-            $("#examSelected").val($(this).text());
+            var id = $(this).find("input").val();
+            var examname = $(this).text()
+            $("#examSelectedId").val(id);
+            $("#examSelected").val(examname);
+            ;
         }
     });
 </script>

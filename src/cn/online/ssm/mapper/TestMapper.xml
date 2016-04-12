@@ -42,4 +42,10 @@
         DROP TABLE IF EXISTS ${value}
     </update>
 
+    <select id="getAllPaperItem" parameterType="String" resultType="cn.online.ssm.po.ExamPaperPo">
+        <![CDATA[
+         SELECT id,examname,examtime FROM ${value}
+        ]]>
+    </select>
+
 </mapper>
