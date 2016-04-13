@@ -12,7 +12,8 @@
 </head>
 <%@include file="../common/headbar.jsp" %>
 <body id="loginBody">
-<span id="slideleft" class="label label-default" style="position: absolute;top: 50%;left: 390px;"><br>收<br><br>起<br><br></span>
+<span id="slideleft" class="label label-default"
+      style="position: fixed;top: 50%;left: 390px;"><br>收<br><br>起<br><br></span>
 
 <div id="mainNavLeft" class="panel-group" style="float:left;width: 400px;">
     <div class="ExamList" style="text-align: center;margin-top: 30px;">
@@ -20,8 +21,8 @@
                 href="#ExamItemList" id="getAllExamBtn">展开全部考试项
         </button>
         <div id="ExamItemList" class="collapse examContent" style="margin-top: 10px;"></div>
-<%--        <input type="hidden" id="examSelected">
-        <input type="hidden" id="examSelectedId">--%>
+        <input type="hidden" id="examSelected">
+        <input type="hidden" id="examSelectedId">
     </div>
 </div>
 
@@ -73,6 +74,26 @@
 <input type="hidden" id="author" value="${realname}">
 <script>
     $(document).ready(function () {
+        //侧边栏随页面滚动
+        var leftNav = $("#mainNavLeft");
+
+        leftNav.css('margin-top', 0);
+        var navTop = leftNav.offset().top;
+
+        $(window).scroll(function () {
+            reset_nav(leftNav, navTop);
+        });
+
+        function reset_nav(leftNav, navTop) {
+            var document_scroll_top = document.documentElement.scrollTop + document.body.scrollTop;
+            if (document_scroll_top > navTop) {
+                leftNav.css('margin-top', document_scroll_top - 50);
+            }
+            if (document_scroll_top <= navTop) {
+                leftNav.css('margin-top', 0);
+            }
+        }
+
         //是否加载所有考试项标志
         var examListFlag = true;
         //滑动标志
@@ -151,13 +172,13 @@
             if (slideFlag == true) {
                 $('#ExamItemList').collapse('hide');
                 $("#mainNavLeft").stop().animate({width: "30px"}, 400);
-                $("#modifyExamPanel").stop().animate({marginLeft: "400px"});
+                $("#modifyExamPanel").stop().animate({marginLeft: "320px"});
                 $("#slideleft").stop().animate({left: "20px"}, 400);
                 $(this).html("<br>展<br><br>开<br><br>");
                 slideFlag = false;
             } else {
                 $("#mainNavLeft").stop().animate({width: "400px"}, 400);
-                $("#modifyExamPanel").stop().animate({marginLeft: "300px"});
+                $("#modifyExamPanel").stop().animate({marginLeft: "100px"});
                 $("#slideleft").stop().animate({left: "390px"}, 400);
                 $(this).html("<br>收<br><br>起<br><br>");
                 slideFlag = true;
@@ -169,10 +190,36 @@
             $(this).css("background-color", "#d81159");
             $(this).siblings().css("background-color", "#2e3e4c");
             var id = $(this).find("input").val();
-            var examname = $(this).text()
+            var examname = $(this).text();
+            var subject = $("#subject").val();
             $("#examSelectedId").val(id);
             $("#examSelected").val(examname);
-            ;
+            //获取选中考卷的所有考题
+            $.ajax({
+                type: "post",
+                url: "/onlineTest/getAllPaperItem.action",
+                contentType: "application/json",
+                async: false,
+                data: JSON.stringify({"id": id, "examname": examname, "subject": subject}),
+                success: function (result) {
+                    $("ul.list-group").html("");
+                    var i = 0;
+                    for (i; i < result.length; i++) {
+                        $("ul.list-group").append('<li class="list-group-item" style="background-color: #D4DFE6;">' +
+                                '<input type="hidden" value="' +
+                                result[i].id +
+                                '"/>' + '<div class="pull-left" name="title" style="display:block;word-break: break-all;word-wrap: break-word;text-align: left">' +
+                                (i + 1) + ". " + result[i].title +
+                                '</div><br><br><br>' +
+                                '<div class="pull-left" name="opt1">' + result[i].opt1 + '</div><br><br>' +
+                                '<div class="pull-left" name="opt2">' + result[i].opt2 + '</div><br><br>' +
+                                '<div class="pull-left" name="opt3">' + result[i].opt3 + '</div><br><br>' +
+                                '<div class="pull-left" name="opt4">' + result[i].opt4 + '</div><br>' + '<hr>' +
+                                '</li>');
+                    }
+                }
+            });
+            $("ul.list-group").children("li").children().click(modifyPaperFun);
         }
     });
 </script>

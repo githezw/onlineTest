@@ -23,11 +23,11 @@
         <![CDATA[
         CREATE TABLE IF NOT EXISTS ${value}(
             id INT AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(100),
-            opt1 VARCHAR(20),
-			opt2 VARCHAR(20),
-			opt3 VARCHAR(20),
-			opt4 VARCHAR(20),
+            title VARCHAR(140),
+            opt1 VARCHAR(30),
+			opt2 VARCHAR(30),
+			opt3 VARCHAR(30),
+			opt4 VARCHAR(30),
 			opt5 VARCHAR(5)
         )]]>
     </update>
@@ -44,8 +44,19 @@
 
     <select id="getAllPaperItem" parameterType="String" resultType="cn.online.ssm.po.ExamPaperPo">
         <![CDATA[
-         SELECT id,examname,examtime FROM ${value}
+         SELECT * FROM ${value}
         ]]>
     </select>
+
+    <update id="updateExamPaperItem" parameterType="Map">
+        UPDATE ${tablename}
+        SET title = #{title},
+        opt1 = #{opt1},
+        opt2 = #{opt2},
+        opt3 = #{opt3},
+        opt4 = #{opt4}
+        WHERE
+        id = #{id}
+    </update>
 
 </mapper>

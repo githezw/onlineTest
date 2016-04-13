@@ -128,6 +128,20 @@ public class ExamController {
         return "exam/modifyExam";
     }
 
+    //修改考题
+    @RequestMapping("/updateExamPaperItem")
+    public @ResponseBody String updateExamPaperItem(@RequestBody Map<String,String> map) throws Exception{
+        String flag;
+        try {
+            testServiceImpl.updateExamPaperItem(map);
+            flag="success";
+        } catch (Exception e) {
+            flag="failure";
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
     //获取一张试卷所有考题
     @RequestMapping("/getAllPaperItem")
     public @ResponseBody List<ExamPaperPo> getAllPaperItem(@RequestBody Map<String,String> map) throws Exception{

@@ -80,6 +80,15 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
+    public void updateExamPaperItem(Map<String, String> map) throws Exception {
+        try {
+            testMapper.updateExamPaperItem(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public List<ExamPaperPo> getAllPaperItem(String tablename) throws Exception {
         List<ExamPaperPo> list = new ArrayList<>();
         try {

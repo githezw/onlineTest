@@ -33,6 +33,9 @@ public interface TestService {
     //删除考试项
     void deleteExamTable(String tablename) throws Exception;
 
+    //修改试题
+    void updateExamPaperItem(Map<String, String> map) throws Exception;
+
     //获取一次考试中所有考试题
     List<ExamPaperPo> getAllPaperItem(String tablename) throws Exception;
 
