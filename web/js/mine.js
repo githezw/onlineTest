@@ -93,7 +93,16 @@ function modifyPaperFun() {
             var opt2 = clickNode.parent().find("div[name='opt2']").text();
             var opt3 = clickNode.parent().find("div[name='opt3']").text();
             var opt4 = clickNode.parent().find("div[name='opt4']").text();
-            var tablename = $("#examSelectedId").val()+"_"+$("#examSelected").val()+"_"+$("#subject").val() ;
+            var tablename = $("#examSelectedId").val() + "_" + $("#examSelected").val() + "_" + $("#subject").val();
+            var dotIndex = title.indexOf(".");
+            if (dotIndex = 1) {
+                title = title.substr(3);
+            } else if (dotIndex = 2) {
+                title = title.substr(4);
+                alert(title);
+            } else {
+                return;
+            }
             $.ajax({
                 type: "post",
                 contentType: "application/json",
