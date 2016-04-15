@@ -116,7 +116,7 @@ public class ExamController {
         return flag;
     }
 
-    //查看全部考试项
+    //查看全部考试项页面
     @RequestMapping("/checkExam")
     public String checkExam() throws Exception {
         return "exam/allExam";

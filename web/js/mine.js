@@ -99,7 +99,6 @@ function modifyPaperFun() {
                 title = title.substr(3);
             } else if (dotIndex = 2) {
                 title = title.substr(4);
-                alert(title);
             } else {
                 return;
             }
@@ -136,4 +135,12 @@ function modifyPaperFun() {
         }
     });
     clickNode.unbind("click");
+}
+
+//考试项背景色方法
+function examClickColor() {
+    $(this).css("background-color", "#d81159");
+    $(this).siblings().css("background-color", "#2e3e4c");
+    $("#examSelectedId").val($(this).find("input").val());
+    $("#examSelected").val($(this).text());
 }

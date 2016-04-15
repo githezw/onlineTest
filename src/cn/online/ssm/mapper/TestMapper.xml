@@ -15,8 +15,15 @@
 
     <select id="getAllExamItem" parameterType="Map" resultType="Map">
         <![CDATA[
-         SELECT id,examname,examtime FROM exams WHERE classno=#{classno}&&subject=#{subject}
-        ]]>
+         SELECT id,examname,examtime,subject FROM exams]]>
+          <where>
+            <if test="classno != null">
+                <![CDATA[ AND classno=#{classno}]]>
+            </if>
+            <if test="subject != null">
+                <![CDATA[ AND subject=#{subject}]]>
+            </if>
+        </where>
     </select>
 
     <update id="createExamTable" parameterType="String">

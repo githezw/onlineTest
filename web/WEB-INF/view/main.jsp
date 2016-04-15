@@ -15,55 +15,90 @@
 <%@include file="common/headbar.jsp" %>
 <div id="mainNavLeft" class="panel-group">
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
-         href="#c1"><span
-            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;C&nbsp;<span class="caret"></span>
-        <%--<span class="badge self-badge pull-right">new</span>--%>
+         href="#chinese"><span
+            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Chinese&nbsp;<span class="caret"></span>
     </div>
-    <div id="c1" class="collapse examContent examContent-s1">
-        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+    <div id="chinese" class="collapse examContent">
     </div>
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
-         href="#c2"><span
-            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;C++&nbsp;<span class="caret"></span>
-        <span class="badge self-badge pull-right">新</span>
+         href="#philosophy"><span
+            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Philosophy&nbsp;<span class="caret"></span>
     </div>
-    <div id="c2" class="collapse examContent examContent-s2">
-        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+    <div id="philosophy" class="collapse examContent">
     </div>
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
-         href="#java"><span
-            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Java&nbsp;<span class="caret"></span>
-        <%--<span class="badge self-badge pull-right">new</span>--%>
+         href="#economics"><span
+            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Economics&nbsp;<span class="caret"></span>
     </div>
-    <div id="java" class="collapse examContent examContent-s3">
-        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+    <div id="economics" class="collapse examContent">
     </div>
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
-         href="#sql"><span
-            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Sql&nbsp;<span class="caret"></span>
-        <%--<span class="badge self-badge pull-right">new</span>--%>
+         href="#biology"><span
+            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Biology&nbsp;<span class="caret"></span>
     </div>
-    <div id="sql" class="collapse examContent examContent-s1">
-        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+    <div id="biology" class="collapse examContent">
     </div>
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
-         href="#net"><span
-            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Network&nbsp;<span class="caret"></span>
-        <%--<span class="badge self-badge pull-right">new</span>--%>
+         href="#history"><span
+            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;History&nbsp;<span class="caret"></span>
     </div>
-    <div id="net" class="collapse examContent examContent-s2">
-        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+    <div id="history" class="collapse examContent">
     </div>
     <div class="subject" data-toggle="collapse" data-parent="#mainNavLeft"
-         href="#asp"><span
-            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Asp .net&nbsp;<span class="caret"></span>
-        <%--<span class="badge self-badge pull-right">new</span>--%>
+         href="#sociology"><span
+            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Sociology&nbsp;<span class="caret"></span>
     </div>
-    <div id="asp" class="collapse examContent examContent-s3">
+    <div id="sociology" class="collapse examContent">
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        function addExamBySubject(subject,id,examname){
+            var idSelect="#"+subject;
+            var examItemNode = $("<div>");
+            examItemNode.attr("class", "ExamItem");
+            examItemNode.text(examname);
+            var examIdNode = $("<input />");
+            examIdNode.attr("type", "hidden");
+            examIdNode.val(id);
+            examItemNode.append(examIdNode);
+            examItemNode.bind("click", examClickColor);
+            $(idSelect).append(examItemNode);
+        }
+        $.ajax({
+            type:"post",
+            contentType:"application/json",
+            data:JSON.stringify({'classno': null, 'subject': null}),
+            url:"/onlineTest/getAllExamItem.action",
+            success:function(result){
+                for(var i =0;i<result.length;i++){
+                    var id = result[i].id;
+                    var examname = result[i].examname;
+                    switch (result[i].subject){
+                        case "chinese":
+                            addExamBySubject("chinese",id,examname);
+                            break;
+                        case "philosophy":
+                            addExamBySubject("philosophy",id,examname);
+                            break;
+                        case "economics":
+                            addExamBySubject("economics",id,examname);
+                            break;
+                        case "biology":
+                            addExamBySubject("biology",id,examname);
+                            break;
+                        case "history":
+                            addExamBySubject("history",id,examname);
+                            break;
+                        case "sociology":
+                            addExamBySubject("sociology",id,examname);
+                            break;
 
-    </div>
-</div>
-<div id="footer">
-</div>
+                    }
+                }
+            }
+        });
+    });
+    </script>
 </body>
 </html>

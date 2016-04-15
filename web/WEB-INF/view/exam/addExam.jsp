@@ -376,14 +376,6 @@
             $("#selectCorrect").val("");
             $("span.glyphicon-ok").css("color","darkgrey");
         }
-
-        //考试项背景色方法
-        function examClickColor() {
-            $(this).css("background-color", "#d81159");
-            $(this).siblings().css("background-color", "#2e3e4c");
-            $("#examSelectedId").val($(this).find("input").val());
-            $("#examSelected").val($(this).text());
-        }
     });
 </script>
 </body>
